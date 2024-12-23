@@ -17,8 +17,8 @@ function TrafficHomeOne({ className }) {
                                     <div className="icon">
                                         <i className="fal fa-check" />
                                     </div>
-                                    <h5 className="title">Hamkorlik va QR to'lov tizimi</h5>
-                                    <p> Hamkorlik qilgan tijorat platformalari va QR to'lov tizimlarini qo'llash imkoniyati</p>
+                                    <h5 className="title">Qo'shimcha hamkor platformalar bilan ishlash imkoniyati</h5>
+                                    <p> Kerakli hamkor platformalar va to'lov tizimlari bilan ishlash imkoniyati</p>
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
@@ -26,8 +26,8 @@ function TrafficHomeOne({ className }) {
                                     <div className="icon">
                                         <i className="fal fa-check" />
                                     </div>
-                                    <h5 className="title">Onlayn qo'llanma va yordam</h5>
-                                    <p>Yordam chat xizmati mijozlar uchun tezroq yordam olishni ta'minlaydi</p>
+                                    <h5 className="title">Qo'llab-quvvatlash xizmati</h5>
+                                    <p>Ish davomida yuzaga kelishi mumkin bo'lgan muammolar uchun doimiy qo'llab-quvvatlash xizmati va qo'shimcha online qo'llanmalar</p>
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
@@ -35,8 +35,8 @@ function TrafficHomeOne({ className }) {
                                     <div className="icon">
                                         <i className="fal fa-check" />
                                     </div>
-                                    <h5 className="title">Mobil qurilma uchun moslamalar</h5>
-                                    <p>Mobil qurilmalarda ham yaxshi ko'rinishini foydalanuvchilar uchun ta'minlash</p>
+                                    <h5 className="title">Mobil qurilmalar uchun moslashuvchanlik</h5>
+                                    <p>IOS va Android mobil qurilmalar uchun moslashuvchan va qulay interfeys</p>
                                 </div>
                             </div>
                             {/* <div className="col-lg-6 col-md-6">
@@ -63,7 +63,7 @@ function TrafficHomeOne({ className }) {
                                         <i className="fal fa-check" />
                                     </div>
                                     <h5 className="title">Obuna xizmatlari</h5>
-                                    <p>Dukanning doimiy foydalanuvchilari uchun obuna servislari. Bu ularga mahsulot uchun ma'lum chegirma beradi!</p>
+                                    <p>Sotib olish, yillik va oylik obuna evaziga o'z online do'koningizga ega bo'lish imkoniyati!</p>
                                 </div>
                             </div>
                         </div>
