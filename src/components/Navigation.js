@@ -111,12 +111,12 @@ function Navigation({ lang = false }) {
                     <li>
                         <a href={`${isHome ? "#industries" : "/#industries"}`} className={activeSection == "industries" ? "active" : ""}>Sohalar</a>
                     </li>
-                    <li>
+                    {/* <li>
                         <a href={`${isHome ? "#about-us" : "/#about-us"}`} className={activeSection == "about-us" ? "active" : ""}>Biz haqimizda</a>
                     </li>
                     <li>
                         <a href={`${isHome ? "#team" : "/#team"}`} className={activeSection == "team" ? "active" : ""}>Jamoamiz</a>
-                    </li>
+                    </li> */}
                     <li>
                         <a href={`${isHome ? "#pricing" : "/#pricing"}`} className={activeSection == "pricing" ? "active" : ""}>Narxlar</a>
                     </li>

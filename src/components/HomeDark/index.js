@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useToggle from '../../Hooks/useToggle';
 import BackToTop from '../BackToTop';
-import AboutUs from '../HomeOne/AboutUs';
+import AboutUs from '../HomeOne/NowStart';
 import BlogHomeOne from '../HomeOne/BlogHomeOne';
 import FaqHomeOne from '../HomeOne/FaqHomeOne';
 import FeaturesHomeOne from "../HomeOne/FeaturesHomeOne";
@@ -48,11 +48,11 @@ function HomeDark() {
             <AboutUs dark={darkMode} />
             <TrafficHomeOne className={darkMode ? 'appie-traffic-area-dark' : ''} />
             {/* <Industries dark={darkMode} className={darkMode ? "appie-team-area-dark" : ""} /> */}
-            <TestimonialHomeOne />
-            <TeamHomeOne dark={darkMode} className={darkMode ? 'appie-team-area-dark' : ''} />
+            {/* <TestimonialHomeOne /> */}
+            {/* <TeamHomeOne dark={darkMode} className={darkMode ? 'appie-team-area-dark' : ''} /> */}
             <PricingHomeOne className={darkMode ? 'appie-pricing-area-dark' : ''} />
             <FaqHomeOne dark={darkMode} className={darkMode ? 'appie-faq-area-dark' : ''} />
-            <BlogHomeOne dark={darkMode} className={darkMode ? 'appie-blog-area-dark' : ''} />
+            {/* <BlogHomeOne dark={darkMode} className={darkMode ? 'appie-blog-area-dark' : ''} /> */}
             <ProjectHomeOne />
             {/* <Contact dark={darkMode} /> */}
             <FooterHomeOne className={darkMode ? 'appie-footer-area-dark' : ''} />

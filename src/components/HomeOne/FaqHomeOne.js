@@ -90,6 +90,11 @@ function FaqHomeOne({ className,dark }) {
             id:16,
             question:"Maketni qanday test qilish mumkin?",
             answer:"Marketni visual uchun quyidagi havolaga bosing: DukanDemo"
+        },
+        {
+            id:17,
+            question:"Istalgan joydan, istalgan vaqtda, istalgancha mijozga soting!",
+            answer:"Dukan orqali bir nechta qadamlarda internet do'koningizga ega bo'ling!"
         }
     ]
     const handleShowMore = () => {

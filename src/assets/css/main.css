@@ -43,6 +43,12 @@ img {
   max-width: 100%;
 }
 
+.imgNow{
+  width: 373px;
+  height: 227px;
+  object-fit: contain;
+}
+
 a:focus,
 input:focus,
 textarea:focus,
@@ -151,6 +157,10 @@ p {
 @media(max-width:991px){
   .header-num{
     display: none;
+  }
+  .imgNow{
+    width: 300px;
+    height: 200px;
   }
 }
 
@@ -6009,7 +6019,7 @@ blockquote cite {
   flex-grow: 1;
 }
 .appie-project-content .input-box .number input{
-  padding-left: 55px;
+  padding-left: 20px;
 }
 .appie-project-content .input-box .country-code{
   position: absolute;
@@ -6104,25 +6114,25 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 6px;
   border: 0;
 }
-.appie-project-content .input-box button {
-  margin-left: 10px;
+.appie-project-content .button_submit button {
+  /* margin-left: 10px; */
   padding: 0 30px;
   border-radius: 6px;
-  padding: 0 25px;
   background: #0e1133;
   border: 0;
   color: #fff;
   line-height: 50px;
   z-index: 20;
+  text-align: end;
 }
 @media (max-width: 767px) {
-  .appie-project-content .input-box button {
+  .appie-project-content .button_submit button {
     margin-top: 20px;
     margin-left: 0;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  .appie-project-content .input-box button {
+  .appie-project-content .button_submit button {
     margin-top: 0px;
     margin-left: 10px;
   }
