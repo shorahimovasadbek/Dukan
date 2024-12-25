@@ -1,0 +1,108 @@
+.text-light_h6 {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+}
+
+.bg-price {
+  background-color: #1f2127;
+  /* font-family: "Public Sans", serif !important; */
+}
+
+.card_price {
+  background-color: #292e3b !important;
+}
+
+.text-warning_h1 {
+  color: #fcdf69;
+  margin: 40px 0;
+}
+
+.modalImg:hover {
+  cursor: pointer;
+}
+
+.modal-content {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.custom-close {
+  position: absolute; /* Joylashuv */
+  top: 0px; /* Yuqoridan joylash */
+  right: 0px; /* O'ngdan joylash */
+  width: 25px; /* Kengligi */
+  height: 25px; /* Balandligi */
+  background-color: #292e3b; /* Orqa fon rangi */
+  opacity: 1; /* Bootstrap opacity ni o'chirish */
+  z-index: 1000;
+}
+
+.custom-close::before {
+  content: "x";
+  color: #fff; /* Rangini oq qilish */
+  font-size: 25px; /* O'lchami */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-close:hover {
+  background-color: #555; /* Hover bo‘lganda orqa rang */
+  color: #fff;
+}
+
+.carousel-control-next {
+  right: -70px !important;
+  z-index: 20000;
+}
+
+.carousel-control-prev {
+  left: -70px !important;
+  z-index: 20000;
+}
+
+.carousel-item img {
+  width: 95%;
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  opacity: 1;
+  background-color: #292e3b;
+}
+
+.button_price {
+  background-color: #1f2127 !important;
+  border: none !important;
+  color: white !important;
+  transition: all ease-in-out 0.3s;
+}
+
+.button_price:hover {
+  background-color: #fcdf69 !important;
+  color: #1f2127 !important;
+}
+
+.card_price_content {
+  background-color: #292e3b !important;
+}
+
+.text_body_content p {
+  color: #fff !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .carousel-control-next {
+    right: -20px !important;
+  }
+
+  .carousel-control-prev {
+    left: -20px !important;
+  }
+}

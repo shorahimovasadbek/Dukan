@@ -1,0 +1,43 @@
+.imgNow1 {
+  height: 227px;
+  transition: all ease-in-out 0.3s;
+  object-fit: contain;
+}
+
+.icons_choose {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+
+.icons_choose p > i {
+  font-size: 25px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.parent_icons__choose:hover .imgNow1 {
+  filter: brightness(50%);
+}
+
+.parent_icons__choose:hover .icons_choose p > i {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* 
+@media only screen and (max-width: 992px) {
+  .imgNow1 {
+    height: 227px;
+    width: 300px;
+  }
+} */

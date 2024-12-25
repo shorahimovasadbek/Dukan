@@ -1,0 +1,62 @@
+.text-light_h6{
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+}
+
+.bg-price{
+    background-color: #1F2127;
+    /* font-family: "Public Sans", serif !important; */
+}
+
+.card_price {
+    background-color: #292E3B !important;
+}
+
+.text-warning_h1{
+    color: #FCDF69;
+    margin: 40px 0;
+}
+
+.span_text{
+    font-size: 18px !important;
+}
+
+.span_text__bottom{
+    margin-left: 150px !important;
+    display: block;
+    color: rgba(252, 223, 105, 0.7);
+}
+
+.bi-check::before{
+    font-size: 20px;
+}
+
+.icon_done{
+    color: #FCDF69;
+    background-color: rgba(251, 252, 105, 0.16);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px !important;
+}
+
+.ul_list__price{
+    line-height: 40px !important;
+}
+
+.button_price{
+    background-color: #1F2127 !important;
+    border: none !important;
+    color: white !important;
+    transition: all ease-in-out .3s;
+}
+
+
+.button_price:hover{
+    background-color: #FCDF69 !important;
+    color: #1F2127 !important;
+}
