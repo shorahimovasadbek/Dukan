@@ -11,6 +11,7 @@ import img1 from "../../assets/newImages/img1.png";
 import img2 from "../../assets/newImages/img2.png";
 import img3 from "../../assets/newImages/img3.png";
 import img4 from '../../assets/newImages/Avatar.png'
+import Steeper from "../Steeper";
 
 function Prices() {
   const [drawer, drawerAction] = useToggle(false);
@@ -38,6 +39,7 @@ function Prices() {
         action={drawerAction.toggle}
       />
       <div className="container choosesection">
+      <Steeper number={3}/>
         <h5 className="text-light mb-2">Cosmetics Landing Page Divi Layout</h5>
         <h6 className="text-light_h6 mb-4">
           World-class designs with original photos and graphics available for
@@ -129,7 +131,7 @@ function Prices() {
                 <p>Jami</p>
                 <p>$90.98</p>
               </div>
-              <Link to="/pricepage">
+              <Link to="/pricepageend">
                 <button className="btn btn-outline-warning w-100 button_price my-3">
                   Sotib olish <i class="bi bi-arrow-right"></i>
                 </button>

@@ -12,6 +12,7 @@ import useToggle from "../../Hooks/useToggle";
 import FooterHomeOne from "../HomeOne/FooterHomeOne";
 import BackToTop from "../BackToTop";
 import './style.css'
+import Steeper from "../Steeper";
 
 function ChooseRoute() {
   const [drawer, drawerAction] = useToggle(false);
@@ -39,6 +40,7 @@ function ChooseRoute() {
         action={drawerAction.toggle}
       />
       <div className="container choosesection">
+        <Steeper number={1}/>
         <h5 className="text-light mb-5">O’zingizga mos yo’nalishni tanlang</h5>
         <div className="row">
           <div className="col-12 col-md-4 justify-content-center d-flex">

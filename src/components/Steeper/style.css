@@ -1,0 +1,22 @@
+.steeper_step span:nth-child(2){
+    color: white !important;
+    transform: translateY(-230%);
+}
+
+.steeper_step span:nth-child(1){
+    color: white !important;
+}
+
+.steeper_step span svg{
+    font-size: 30px !important;
+}
+
+@media only screen and (max-width: 992px){
+    .steeper_step span:nth-child(2){
+        font-size: 12px !important;
+    }
+    
+    .steeper_step span:nth-child(1){
+        font-size: 12px !important;
+    }
+}

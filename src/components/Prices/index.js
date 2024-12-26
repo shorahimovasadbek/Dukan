@@ -5,6 +5,7 @@ import Drawer from "../Mobile/Drawer";
 import useToggle from "../../Hooks/useToggle";
 import FooterHomeOne from "../HomeOne/FooterHomeOne";
 import BackToTop from "../BackToTop";
+import Steeper from "../Steeper";
 import "./style.css";
 
 function Prices() {
@@ -33,6 +34,7 @@ function Prices() {
         action={drawerAction.toggle}
       />
       <div className="container choosesection">
+      <Steeper number={2}/>
         <h5 className="text-light mb-2">Narxlar rejalari</h5>
         <h6 className="text-light_h6 mb-4">
           Ehtiyojlaringizga mos keladigan eng yaxshi rejani tanlang.

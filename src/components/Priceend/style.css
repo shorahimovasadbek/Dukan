@@ -1,0 +1,49 @@
+.text-light_h6 {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+}
+
+.bg-price {
+  background-color: #1f2127;
+  /* font-family: "Public Sans", serif !important; */
+}
+
+.text-warning_h1 {
+  color: #fcdf69;
+  margin: 40px 0;
+}
+
+.button_price a {
+  background-color: #fcdf69 !important;
+  border: none !important;
+  transition: all ease-in-out 0.3s;
+  color: #292e3b !important;
+}
+
+.text_body_content p {
+  color: #fff !important;
+}
+
+.bg_1212__end {
+  background-color: #292e3b !important;
+}
+
+.border_card {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+}
+
+.border_card:hover {
+  cursor: pointer;
+}
+
+input:focus {
+  box-shadow: none !important;
+  border-color: inherit !important;
+  outline: none !important;
+}
+
+
+.input_card__number{
+    border-color: rgba(255, 255, 255, 0.16) !important;
+}

@@ -78,17 +78,11 @@
 }
 
 .button_price {
-  background-color: #1f2127 !important;
-  border: none !important;
-  color: white !important;
-  transition: all ease-in-out 0.3s;
-}
-
-.button_price:hover {
   background-color: #fcdf69 !important;
-  color: #1f2127 !important;
+  border: none !important;
+  transition: all ease-in-out 0.3s;
+  color: #292e3b !important;
 }
-
 .card_price_content {
   background-color: #292e3b !important;
 }
