@@ -27,7 +27,7 @@ function Prices() {
     <div className="bg-price">
       <Drawer drawer={drawer} action={drawerAction.toggle} />
       <HomeOneHeader
-        className={darkMode ? "appie-header-area-dark" : ""}
+        className={darkMode ? "appie-header-area-dark back_header" : ""}
         dark={darkMode}
         darkEnable
         changeMode={setDarkMode.toggle}

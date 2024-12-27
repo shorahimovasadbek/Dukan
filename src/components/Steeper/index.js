@@ -3,11 +3,26 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 import './style.css'
 
 const steps = [
-  "Keyingi bosqich","Keyingi bosqich","Keyingi bosqich",
-  "To'lov bosqichi",
+  {
+    name: "Keyingi bosqich",
+    url: '/chooseroute'
+  },
+  {
+    name: "Keyingi bosqich",
+    url: '/chooseone'
+  },
+  {
+    name: "Keyingi bosqich",
+    url: '/prices'
+  },
+  {
+    name: "To'lov bosqichi",
+    url: '/pricepage'
+  }
 ];
 
 function Steeper({number}) {
@@ -16,7 +31,7 @@ function Steeper({number}) {
       <Stepper activeStep={number} alternativeLabel>
         {steps.map((label) => (
           <Step>
-            <StepLabel className="steeper_step">{label}</StepLabel>
+            <StepLabel className="steeper_step"><Link to={label.url}>{label.name}</Link></StepLabel>
           </Step>
         ))}
       </Stepper>

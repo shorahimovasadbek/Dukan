@@ -10,7 +10,7 @@ import "./style.css";
 import img1 from "../../assets/newImages/img1.png";
 import img2 from "../../assets/newImages/img2.png";
 import img3 from "../../assets/newImages/img3.png";
-import img4 from '../../assets/newImages/Avatar.png'
+import img4 from "../../assets/newImages/Avatar.png";
 import Steeper from "../Steeper";
 
 function Prices() {
@@ -28,18 +28,19 @@ function Prices() {
       document.body.classList.remove("appie-dark");
     };
   });
+
   return (
     <div className="bg-price">
       <Drawer drawer={drawer} action={drawerAction.toggle} />
       <HomeOneHeader
-        className={darkMode ? "appie-header-area-dark" : ""}
+        className={darkMode ? "appie-header-area-dark back_header" : ""}
         dark={darkMode}
         darkEnable
         changeMode={setDarkMode.toggle}
         action={drawerAction.toggle}
       />
       <div className="container choosesection">
-      <Steeper number={3}/>
+        <Steeper number={3} />
         <h5 className="text-light mb-2">Cosmetics Landing Page Divi Layout</h5>
         <h6 className="text-light_h6 mb-4">
           World-class designs with original photos and graphics available for
@@ -73,7 +74,11 @@ function Prices() {
                     aria-label="Close"
                   ></button>
                   <div class="modal-body">
-                    <div id="carouselExample" class="carousel slide">
+                    <div
+                      id="carouselExample"
+                      class="carousel slide carousel-fade"
+                      data-ride="carousel"
+                    >
                       <div class="carousel-inner">
                         <div class="carousel-item active">
                           <img src={img1} alt="..." />
@@ -184,11 +189,13 @@ function Prices() {
 
             <h5 className="text-light my-3">Instruktor</h5>
             <div className="d-flex align-items-center">
-                <img src={img4}/>
-                <div className="ms-3">
-                    <h6 className="text-light">Devonne Wallbridge</h6>
-                    <p className="text-light_h6">Veb dasturchi, dizayner va o'qituvchi</p>
-                </div>
+              <img src={img4} />
+              <div className="ms-3">
+                <h6 className="text-light">Devonne Wallbridge</h6>
+                <p className="text-light_h6">
+                  Veb dasturchi, dizayner va o'qituvchi
+                </p>
+              </div>
             </div>
           </div>
         </div>

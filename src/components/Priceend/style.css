@@ -43,7 +43,12 @@ input:focus {
   outline: none !important;
 }
 
-
-.input_card__number{
-    border-color: rgba(255, 255, 255, 0.16) !important;
+.input_card__number {
+  border-color: rgba(255, 255, 255, 0.16) !important;
 }
+
+.back_header {
+  background-color: #292e3c;
+  padding-bottom: 20px;
+}
+

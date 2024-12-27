@@ -1,3 +1,7 @@
+.choosesection{
+  background-color: #1f2127;
+}
+
 .imgNow1 {
   height: 227px;
   transition: all ease-in-out 0.3s;
@@ -34,10 +38,8 @@
   opacity: 1;
   transform: translateY(0);
 }
-/* 
-@media only screen and (max-width: 992px) {
-  .imgNow1 {
-    height: 227px;
-    width: 300px;
-  }
-} */
+
+.back_header{
+  background-color: #292E3C;
+  padding-bottom: 20px;
+}

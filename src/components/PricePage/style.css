@@ -91,6 +91,11 @@
   color: #fff !important;
 }
 
+.back_header{
+  background-color: #292E3C;
+  padding-bottom: 20px;
+}
+
 @media only screen and (max-width: 992px) {
   .carousel-control-next {
     right: -20px !important;
