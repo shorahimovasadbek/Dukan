@@ -63,7 +63,7 @@ function HomeOneHeader({
                                             LTR
                                         </span>
                                     ))}
-                                <a className={`main-btn ml-30`} href="#contact_">
+                                <a className={`main-btn ml-30`} href="/#contact_">
                                     Buyurtma berish
                                 </a>
                                 <div

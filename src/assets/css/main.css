@@ -951,7 +951,7 @@ p {
 }
 
 .appie-header-area {
-  padding-top: 30px;
+  padding-top: 20px;
   position: absolute;
   left: 0;
   top: 0;
@@ -1944,8 +1944,8 @@ p {
 section::before{
   content: "";
   display: block;
-  height: 130px; /* Adjust this value based on the height of your navbar */
-  margin-top: -90px; /* Negative margin equal to the height of navbar */
+  height: 130px;
+  margin-top: -90px; 
   visibility: hidden;
 }
 /* .more-faqs{

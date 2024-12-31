@@ -78,23 +78,22 @@
 }
 
 .button_price {
-  background-color: #1f2127 !important;
-  border: none !important;
-  color: white !important;
-  transition: all ease-in-out 0.3s;
-}
-
-.button_price:hover {
   background-color: #fcdf69 !important;
-  color: #1f2127 !important;
+  border: none !important;
+  transition: all ease-in-out 0.3s;
+  color: #292e3b !important;
 }
-
 .card_price_content {
   background-color: #292e3b !important;
 }
 
 .text_body_content p {
   color: #fff !important;
+}
+
+.back_header{
+  background-color: #292E3C;
+  padding-bottom: 20px;
 }
 
 @media only screen and (max-width: 992px) {

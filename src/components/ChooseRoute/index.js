@@ -11,7 +11,8 @@ import Drawer from "../Mobile/Drawer";
 import useToggle from "../../Hooks/useToggle";
 import FooterHomeOne from "../HomeOne/FooterHomeOne";
 import BackToTop from "../BackToTop";
-import './style.css'
+import "./style.css";
+import Steeper from "../Steeper";
 
 function ChooseRoute() {
   const [drawer, drawerAction] = useToggle(false);
@@ -32,77 +33,82 @@ function ChooseRoute() {
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
       <HomeOneHeader
-        className={darkMode ? "appie-header-area-dark" : ""}
+        className={darkMode ? "appie-header-area-dark back_header" : ""}
         dark={darkMode}
         darkEnable
         changeMode={setDarkMode.toggle}
         action={drawerAction.toggle}
       />
-      <div className="container choosesection">
-        <h5 className="text-light mb-5">O’zingizga mos yo’nalishni tanlang</h5>
-        <div className="row">
-          <div className="col-12 col-md-4 justify-content-center d-flex">
-            <Link to="/chooseone">
-              <img className="imgNow" src={kosmetika} />
-              <h5 className="text-light mt-4">Kosmetika</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
-            <Link to="/chooseone">
-              <img className="imgNow" src={mebel} />
-              <h5 className="text-light mt-4">Mebel</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
-            <Link to="/chooseone">
-              <img className="imgNow" src={oziqovqat} />
-              <h5 className="text-light mt-4">Oziq-ovqat</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-            <Link to="/chooseone">
-              <img className="imgNow" src={kiyimkechak} />
-              <h5 className="text-light mt-4">Kiyim-kechak</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-            <Link to="/chooseone">
-              <img className="imgNow" src={electronika} />
-              <h5 className="text-light mt-4">Elektronika</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-            <Link to="/chooseone">
-              <img className="imgNow" src={shifoxona} />
-              <h5 className="text-light mt-4">Shifoxona</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-            <Link to="/chooseone">
-              <img className="imgNow" src={kiyimkechak} />
-              <h5 className="text-light mt-4">Kiyim-kechak</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-            <Link to="/chooseone">
-              <img className="imgNow" src={electronika} />
-              <h5 className="text-light mt-4">Elektronika</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-            <Link to="/chooseone">
-              <img className="imgNow" src={shifoxona} />
-              <h5 className="text-light mt-4">Shifoxona</h5>
-              <p className="text-light">443 templates</p>
-            </Link>
+      <div className="choosesection_parent">
+        <div className="container choosesection">
+          <Steeper number={1} />
+          <h5 className="text-light mb-5">
+            O’zingizga mos yo’nalishni tanlang
+          </h5>
+          <div className="row">
+            <div className="col-12 col-md-4 justify-content-center d-flex">
+              <Link to="/chooseone">
+                <img className="imgNow" src={kosmetika} />
+                <h5 className="text-light mt-4">Kosmetika</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
+              <Link to="/chooseone">
+                <img className="imgNow" src={mebel} />
+                <h5 className="text-light mt-4">Mebel</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
+              <Link to="/chooseone">
+                <img className="imgNow" src={oziqovqat} />
+                <h5 className="text-light mt-4">Oziq-ovqat</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
+              <Link to="/chooseone">
+                <img className="imgNow" src={kiyimkechak} />
+                <h5 className="text-light mt-4">Kiyim-kechak</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
+              <Link to="/chooseone">
+                <img className="imgNow" src={electronika} />
+                <h5 className="text-light mt-4">Elektronika</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
+              <Link to="/chooseone">
+                <img className="imgNow" src={shifoxona} />
+                <h5 className="text-light mt-4">Shifoxona</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
+              <Link to="/chooseone">
+                <img className="imgNow" src={kiyimkechak} />
+                <h5 className="text-light mt-4">Kiyim-kechak</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
+              <Link to="/chooseone">
+                <img className="imgNow" src={electronika} />
+                <h5 className="text-light mt-4">Elektronika</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
+            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
+              <Link to="/chooseone">
+                <img className="imgNow" src={shifoxona} />
+                <h5 className="text-light mt-4">Shifoxona</h5>
+                <p className="text-light">443 templates</p>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
