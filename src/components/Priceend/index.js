@@ -15,12 +15,31 @@ import click from "../../assets/newImages/click.png";
 // import visa from "../../assets/newImages/visa.png";
 import Steeper from "../Steeper";
 import "./style.css";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import getData from "../../services";
+import { toast, ToastContainer } from "react-toastify";
 
 function Prices() {
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
   const [checkCardInfo, setCheckCardInfo] = useState(false);
+  const [buttonSend, setButtonSend] = useState(false)
+  const [data, setData] = useState('')
+  const params = useParams()
 
+  const fetchData = async () => {
+    try {
+      const response = await getData.post(`/api/payment/payme/start`, { 'order_id': params.id })
+      setData(response)
+      toast.success("To'lov sahivasiga yo'naltirdik!")
+      setTimeout(() => {
+        window.open(response.data.data.url, '_blank')
+      }, 1000);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     document.body.classList.add("appie-init");
     if (darkMode) {
@@ -31,31 +50,36 @@ function Prices() {
     return () => {
       document.body.classList.remove("appie-dark");
     };
-  });
+  }, []);
 
   function Uzcard() {
     document.getElementById("uzcard").click();
     setCheckCardInfo(true)
+    setButtonSend(false)
   }
 
   function Payme() {
     document.getElementById("payme").click();
     setCheckCardInfo(false)
+    setButtonSend(true)
   }
 
-  function Uzum(){
+  function Uzum() {
     document.getElementById("paynet").click()
     setCheckCardInfo(false)
+    setButtonSend(false)
   }
 
-  function Click (){
+  function Click() {
     document.getElementById("click").click()
     setCheckCardInfo(false)
+    setButtonSend(false)
   }
 
-  function Oson () {
+  function Oson() {
     document.getElementById("visa").click()
     setCheckCardInfo(false)
+    setButtonSend(false)
   }
 
   return (
@@ -188,11 +212,14 @@ function Prices() {
                 <p>Jami</p>
                 <p>$90.98</p>
               </div>
-              <button className="btn w-100 button_price my-3">
-                <Link to="/">
-                  Sotib olish <i class="bi bi-arrow-right"></i>
-                </Link>
-              </button>
+              {
+                (buttonSend) &&
+                <button onClick={fetchData} className="btn w-100 button_price my-3">
+                  <Link to="#">
+                    Sotib olish <i class="bi bi-arrow-right"></i>
+                  </Link>
+                </button>
+              }
 
               <p className="text-light_h6 my-3">
                 Davom etish orqali siz Xizmat shartlari va Maxfiylik
@@ -203,7 +230,7 @@ function Prices() {
           </div>
         </div>
       </div>
-
+      <ToastContainer />
       <FooterHomeOne className={darkMode ? "appie-footer-area-dark" : ""} />
       <BackToTop />
     </div>

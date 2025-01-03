@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom/cjs/react-router-dom";
 import kosmetika from "../../assets/newImages/iframe1.png";
 import mebel from "../../assets/newImages/iframe2.png";
 import oziqovqat from "../../assets/newImages/iframe3.png";
@@ -16,12 +16,29 @@ import FooterHomeOne from "../HomeOne/FooterHomeOne";
 import BackToTop from "../BackToTop";
 import Steeper from "../Steeper";
 import "./style.css";
+import { ClipLoader } from "react-spinners";
+import getData from "../../services";
 
 function ChooseRoute() {
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
+  const [data, setData] = useState([])
+  const useparams = useParams()
+
 
   useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await getData.get(`/api/categories/${useparams.id}`)
+        setData(response.data)
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData()
+
     document.body.classList.add("appie-init");
     if (darkMode) {
       document.body.classList.add("appie-dark");
@@ -31,7 +48,7 @@ function ChooseRoute() {
     return () => {
       document.body.classList.remove("appie-dark");
     };
-  });
+  }, []);
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -49,31 +66,41 @@ function ChooseRoute() {
             O'zingiz Yoqtirgan Web-Sayt Shablonini Tanlang
           </h5>
           <div className="row">
-            <div className="col-12 col-md-4 justify-content-center d-flex position-relative">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={kosmetika} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">72$</p>
-                </Link>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
+
+            {
+              (data && data.themes) ?
+                data.themes?.map((item, index) => {
+                  return (
+                    <div className='col-12 col-md-4 justify-content-center d-flex my-4' key={index}>
+                      <div className="parent_icons__choose">
+                        <Link to="/prices">
+                          <div className="d-flex icons_choose">
+                            <p>
+                              <i class="bi bi-cart2"></i>
+                            </p>
+                            <p>
+                              <i class="bi bi-list mx-4"></i>
+                            </p>
+                            <p>
+                              <i class="bi bi-eye"></i>
+                            </p>
+                          </div>
+                        </Link>
+                        <Link to={`/prices`}>
+                          <img className="imgNow1" src={(item.image ? item.image : kosmetika)} />
+                          <h5 className="text-light mt-4">
+                            {item.name}
+                          </h5>
+                          <p className="text-light">{item.price}</p>
+                        </Link>
+                      </div>
+                    </div>
+                  )
+                })
+                :
+                <ClipLoader />
+            }
+            {/* <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
               <div className="parent_icons__choose">
                 <Link to="/prices">
                   <div className="d-flex icons_choose">
@@ -264,10 +291,10 @@ function ChooseRoute() {
                   <p className="text-light">45$</p>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="d-flex justify-content-center mt-5">
-            <Link to="/">
+            <Link to="#">
               <button className="btn btn-outline-light px-5">Ko'proq</button>
             </Link>
           </div>

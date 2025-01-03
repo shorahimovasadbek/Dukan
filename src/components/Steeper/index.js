@@ -9,11 +9,11 @@ import './style.css'
 const steps = [
   {
     name: "Keyingi bosqich",
-    url: '/chooseroute'
+    url: '/thems'
   },
   {
     name: "Keyingi bosqich",
-    url: '/chooseone'
+    url: '/theme'
   },
   {
     name: "Keyingi bosqich",

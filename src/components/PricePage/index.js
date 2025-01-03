@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import HomeOneHeader from "../HomeOne/HomeOneHeader";
 import Drawer from "../Mobile/Drawer";
@@ -12,12 +12,28 @@ import img2 from "../../assets/newImages/img2.png";
 import img3 from "../../assets/newImages/img3.png";
 import img4 from "../../assets/newImages/Avatar.png";
 import Steeper from "../Steeper";
+import getData from "../../services";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function Prices() {
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
+  const [data, setData] = useState('')
+  const params = useParams()
 
   useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const response = await getData.post(`/api/order/store`, {'tariff_id': params.id})
+        setData(response.data.data.order_id)
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData()
+
     document.body.classList.add("appie-init");
     if (darkMode) {
       document.body.classList.add("appie-dark");
@@ -27,7 +43,7 @@ function Prices() {
     return () => {
       document.body.classList.remove("appie-dark");
     };
-  });
+  }, []);
 
   return (
     <div className="bg-price">
@@ -136,7 +152,7 @@ function Prices() {
                 <p>Jami</p>
                 <p>$90.98</p>
               </div>
-              <Link to="/pricepageend">
+              <Link to={`/pricepageend/${data}`}>
                 <button className="btn btn-outline-warning w-100 button_price my-3">
                   Sotib olish <i class="bi bi-arrow-right"></i>
                 </button>

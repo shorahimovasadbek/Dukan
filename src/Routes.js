@@ -46,11 +46,11 @@ function Routes() {
               <Route exact path="/" component={HomeDark} />
               <Route exact path="/blogs" component={Blogs} />
               <Route exact path="/blogs/blog/:id" component={Blog} />
-              <Route exact path="/chooseroute" component={ChooseRoute} />
-              <Route exact path="/chooseone" component={ChooseOne} />
+              <Route exact path="/thems" component={ChooseRoute} />
+              <Route exact path="/theme/:id" component={ChooseOne} />
               <Route exact path="/prices" component={Prices} />
-              <Route exact path="/pricepage" component={PricesPage} />
-              <Route exact path="/pricepageend" component={PricesPageend} />
+              <Route exact path="/pricepage/:id" component={PricesPage} />
+              <Route exact path="/pricepageend/:id" component={PricesPageend} />
               {/* <Route exact path="/news/single-news" component={SingleNews} />
                                     <Route exact path="/service" component={Service} />
                                     <Route exact path="/about-us" component={AboutUs} />

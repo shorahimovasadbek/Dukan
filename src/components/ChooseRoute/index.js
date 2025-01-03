@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import kosmetika from "../../assets/newImages/kosmetika.png";
 import mebel from "../../assets/newImages/mebel.png";
@@ -13,12 +13,26 @@ import FooterHomeOne from "../HomeOne/FooterHomeOne";
 import BackToTop from "../BackToTop";
 import "./style.css";
 import Steeper from "../Steeper";
+import getData from "../../services";
+import { ClipLoader } from "react-spinners";
 
 function ChooseRoute() {
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
+  const [data, setData] = useState([])
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getData.get('/api/categories')
+        setData(response.data)
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData()
+
     document.body.classList.add("appie-init");
     if (darkMode) {
       document.body.classList.add("appie-dark");
@@ -28,7 +42,7 @@ function ChooseRoute() {
     return () => {
       document.body.classList.remove("appie-dark");
     };
-  });
+  }, []);
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -46,14 +60,23 @@ function ChooseRoute() {
             O’zingizga mos yo’nalishni tanlang
           </h5>
           <div className="row">
-            <div className="col-12 col-md-4 justify-content-center d-flex">
-              <Link to="/chooseone">
-                <img className="imgNow" src={kosmetika} />
-                <h5 className="text-light mt-4">Kosmetika</h5>
-                <p className="text-light">443 templates</p>
-              </Link>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
+            {
+              (data) ?
+                data.map((item, index) => {
+                  return (
+                    <div className='col-12 col-md-4 justify-content-center d-flex my-4' key={index}>
+                      <Link to= {`/theme/${item.id}`}>
+                        <img className='imgNow' src={kosmetika} />
+                        <h5 className='text-light mt-4'>{item.name}</h5>
+                        {/* <p className='text-light'>443 templates</p> */}
+                      </Link>
+                    </div>
+                  )
+                })
+                :
+                <ClipLoader />
+            }
+            {/* <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
               <Link to="/chooseone">
                 <img className="imgNow" src={mebel} />
                 <h5 className="text-light mt-4">Mebel</h5>
@@ -108,7 +131,7 @@ function ChooseRoute() {
                 <h5 className="text-light mt-4">Shifoxona</h5>
                 <p className="text-light">443 templates</p>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
