@@ -56,7 +56,7 @@ function ChooseRoute() {
       <div className="choosesection_parent">
         <div className="container choosesection">
           <Steeper number={1} />
-          <h5 className="text-light mb-5">
+          <h5 className="text-light mb-2">
             O’zingizga mos yo’nalishni tanlang
           </h5>
           <div className="row">
@@ -66,7 +66,7 @@ function ChooseRoute() {
                   return (
                     <div className='col-12 col-md-4 justify-content-center d-flex my-4' key={index}>
                       <Link to= {`/theme/${item.id}`}>
-                        <img className='imgNow' src={kosmetika} />
+                        <img className='imgNow' src={(item.image != null) ? process.env.REACT_APP_BASE_URL + item.image : kosmetika} />
                         <h5 className='text-light mt-4'>{item.name}</h5>
                         {/* <p className='text-light'>443 templates</p> */}
                       </Link>

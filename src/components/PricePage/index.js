@@ -20,6 +20,7 @@ function Prices() {
   const [darkMode, setDarkMode] = useToggle(true);
   const [data, setData] = useState('')
   const params = useParams()
+  localStorage.setItem('tariffId', params.id)
 
   useEffect(() => {
 

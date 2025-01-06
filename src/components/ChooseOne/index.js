@@ -24,7 +24,7 @@ function ChooseRoute() {
   const [darkMode, setDarkMode] = useToggle(true);
   const [data, setData] = useState([])
   const useparams = useParams()
-
+  localStorage.setItem('themeId', useparams.id)
 
   useEffect(() => {
 
@@ -62,7 +62,7 @@ function ChooseRoute() {
       <div className="choosesection">
         <div className="container ">
           <Steeper number={2} />
-          <h5 className="text-light mb-5">
+          <h5 className="text-light mb-2">
             O'zingiz Yoqtirgan Web-Sayt Shablonini Tanlang
           </h5>
           <div className="row">
@@ -87,7 +87,7 @@ function ChooseRoute() {
                           </div>
                         </Link>
                         <Link to={`/prices`}>
-                          <img className="imgNow1" src={(item.image ? item.image : kosmetika)} />
+                          <img className="imgNow1" src={(item.image != null) ? process.env.REACT_APP_BASE_URL + item.image : kosmetika} />
                           <h5 className="text-light mt-4">
                             {item.name}
                           </h5>

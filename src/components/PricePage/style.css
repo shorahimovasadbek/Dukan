@@ -27,20 +27,20 @@
 }
 
 .custom-close {
-  position: absolute; /* Joylashuv */
-  top: 0px; /* Yuqoridan joylash */
-  right: 0px; /* O'ngdan joylash */
-  width: 25px; /* Kengligi */
-  height: 25px; /* Balandligi */
-  background-color: #292e3b; /* Orqa fon rangi */
-  opacity: 1; /* Bootstrap opacity ni o'chirish */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 25px;
+  height: 25px;
+  background-color: #292e3b;
+  opacity: 1;
   z-index: 1000;
 }
 
 .custom-close::before {
   content: "x";
-  color: #fff; /* Rangini oq qilish */
-  font-size: 25px; /* O'lchami */
+  color: #fff;
+  font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,7 @@
 }
 
 .custom-close:hover {
-  background-color: #555; /* Hover bo‘lganda orqa rang */
+  background-color: #555;
   color: #fff;
 }
 
@@ -83,6 +83,7 @@
   transition: all ease-in-out 0.3s;
   color: #292e3b !important;
 }
+
 .card_price_content {
   background-color: #292e3b !important;
 }
@@ -91,9 +92,33 @@
   color: #fff !important;
 }
 
-.back_header{
+.back_header {
   background-color: #292E3C;
   padding-bottom: 20px;
+}
+
+.modal-body {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 10px;
+  display: none;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media only screen and (max-width: 992px) {
