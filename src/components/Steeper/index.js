@@ -9,7 +9,7 @@ import './style.css'
 const steps = [
   {
     name: "Keyingi bosqich",
-    url: '/thems'
+    url: '/categories'
   },
   {
     name: "Keyingi bosqich",

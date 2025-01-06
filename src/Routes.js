@@ -46,7 +46,7 @@ function Routes() {
               <Route exact path="/" component={HomeDark} />
               <Route exact path="/blogs" component={Blogs} />
               <Route exact path="/blogs/blog/:id" component={Blog} />
-              <Route exact path="/thems" component={ChooseRoute} />
+              <Route exact path="/categories" component={ChooseRoute} />
               <Route exact path="/theme/:id" component={ChooseOne} />
               <Route exact path="/prices" component={Prices} />
               <Route exact path="/pricepage/:id" component={PricesPage} />

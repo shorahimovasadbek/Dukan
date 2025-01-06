@@ -40,7 +40,7 @@ function NowStart({ dark }) {
                                     if (index < 6) {
                                         return (
                                             <div className='col-12 col-md-4 justify-content-center d-flex my-4' key={index}>
-                                                <Link to="/thems">
+                                                <Link to="/categories">
                                                     <img className='imgNow' src={kosmetika} />
                                                     <h5 className='text-light mt-4'>{item.name}</h5>
                                                     {/* <p className='text-light'>443 templates</p> */}
@@ -90,7 +90,7 @@ function NowStart({ dark }) {
                     </div>
 
                     <div className='d-flex justify-content-center mt-5'>
-                        <Link to="/thems">
+                        <Link to="/categories">
                             <button className='btn btn-outline-light px-5'>Ko'proq</button>
                         </Link>
                     </div>
