@@ -49,6 +49,17 @@ img {
   object-fit: contain;
 }
 
+.text_info{
+  margin-bottom: 100px;
+}
+
+.partner_content img{
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 a:focus,
 input:focus,
 textarea:focus,

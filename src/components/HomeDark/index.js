@@ -43,8 +43,8 @@ function HomeDark() {
                 action={drawerAction.toggle}
             />
             <HeroHomeOne className={darkMode ? 'appie-hero-area-dark' : ''} />
-            <ServicesHomeOne className={darkMode ? 'appie-service-area-dark' : ''} />
             <FeaturesHomeOne className={darkMode ? 'appie-features-area-dark' : ''} />
+            <ServicesHomeOne className={darkMode ? 'appie-service-area-dark' : ''} />
             <AboutUs dark={darkMode} />
             <TrafficHomeOne className={darkMode ? 'appie-traffic-area-dark' : ''} />
             {/* <Industries dark={darkMode} className={darkMode ? "appie-team-area-dark" : ""} /> */}

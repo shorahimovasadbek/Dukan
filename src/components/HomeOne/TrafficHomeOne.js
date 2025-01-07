@@ -1,5 +1,7 @@
 import React from 'react';
 import thumb from "../../assets/newImages/features/features1.png";
+import imgpartner1 from '../../assets/newImages/partner1.jpg'
+import imgpartner2 from '../../assets/newImages/partner2.jpg'
 
 function TrafficHomeOne({ className }) {
     return (
@@ -18,7 +20,11 @@ function TrafficHomeOne({ className }) {
                                         <i className="fal fa-check" />
                                     </div>
                                     <h5 className="title">Qo'shimcha hamkor platformalar bilan ishlash imkoniyati</h5>
-                                    <p> Kerakli hamkor platformalar va to'lov tizimlari bilan ishlash imkoniyati</p>
+                                    <p> Kerakli hamkor platformalar va to'lov tizimlari bilan ishlash imkoniyati.</p>
+                                    <div className='d-flex partner_content'>
+                                        <img src={imgpartner1}/>
+                                        <img className='ms-3' src={imgpartner2}/>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
