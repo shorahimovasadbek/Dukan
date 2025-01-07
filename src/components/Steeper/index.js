@@ -6,26 +6,28 @@ import StepLabel from "@mui/material/StepLabel";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import './style.css'
 
-const steps = [
-  {
-    name: "Keyingi bosqich",
-    url: '/categories'
-  },
-  {
-    name: "Keyingi bosqich",
-    url: '/theme'
-  },
-  {
-    name: "Keyingi bosqich",
-    url: '/prices'
-  },
-  {
-    name: "To'lov bosqichi",
-    url: '/pricepage'
-  }
-];
 
 function Steeper({number}) {
+  let idtheme = localStorage.getItem('themeId')
+  let tariffId = localStorage.getItem('tariffId')
+  const steps = [
+    {
+      name: "Keyingi bosqich",
+      url: "/categories"
+    },
+    {
+      name: "Keyingi bosqich",
+      url: `/theme/${idtheme ? idtheme : 1}`
+    },
+    {
+      name: "Keyingi bosqich",
+      url: `/prices`
+    },
+    {
+      name: "To'lov bosqichi",
+      url: `/pricepage/${tariffId ? tariffId : 1}`
+    }
+  ];
   return (
     <Box sx={{ width: "100%", margin: '20px 0' }}>
       <Stepper activeStep={number} alternativeLabel>
