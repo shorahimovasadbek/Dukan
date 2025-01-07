@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function PricingHomeOne({ className }) {
-    const [toggleSwitch, setSwitchValue] = useState(true);
+    const [toggleSwitch, setSwitchValue] = useState(false);
     return (
         <>
             <section className={`appie-pricing-area pt-90 pb-90 ${className || ''}`} id='pricing'>
@@ -12,7 +12,7 @@ function PricingHomeOne({ className }) {
                                 <h3 className="appie-title">Ta'rifingizni tanlang</h3>
                                 {/* <p>Different layouts and styles for team sections.</p> */}
                             </div>
-                            <ul
+                            {/* <ul
                                 className="list-inline text-center switch-toggler-list"
                                 role="tablist"
                                 id="switch-toggle-tab"
@@ -31,7 +31,7 @@ function PricingHomeOne({ className }) {
                                 <li className={`year ${toggleSwitch === false ? 'active' : ''}`}>
                                     <a href="#">To'liq sotib olish</a>
                                 </li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                     <div className="tabed-content">
@@ -159,7 +159,7 @@ function PricingHomeOne({ className }) {
                                             <div className="pricig-heading">
                                                 <h6>Vebsaytlar</h6>
                                                 <div className="price-range">
-                                                    <span>12 mln so'm</span>
+                                                    <span>6 750 000 so'm</span>
                                                     <p>/to'liq</p>
                                                 </div>
                                                 {/* <p>14 kun demo foydalanib ko'ring</p> */}
@@ -191,9 +191,9 @@ function PricingHomeOne({ className }) {
                                     <div className="col-lg-4 col-md-6 wow animated fadeInUp">
                                         <div className="pricing-one__single center">
                                             <div className="pricig-heading">
-                                                <h6>Mobil ilovalar</h6>
+                                                <h6>Vebsayt + Telegram</h6>
                                                 <div className="price-range">
-                                                    <span>18 mln so'm</span>
+                                                    <span>10 125 000 so'm</span>
                                                     <p>/to'liq</p>
                                                 </div>
                                                 {/* <p>To'liq sotib olish 18mln so'm</p> */}
@@ -228,10 +228,50 @@ function PricingHomeOne({ className }) {
                                     <div className="col-lg-4 col-md-6 wow animated fadeInRight">
                                         <div className="pricing-one__single">
                                             <div className="pricig-heading">
-                                                <h6>1 + 1</h6>
+                                                <h6>Vebsayt + Mobile</h6>
                                                 <div className="price-range">
-                                                    <span>25 mln so'm</span>
+                                                    <span>12 825 000 so'm</span>
                                                     <p>/to'liq</p>
+                                                </div>
+                                                {/* <p>To'liq sotib olish 25mln so'm</p> */}
+                                            </div>
+                                            {/* <div className="pricig-body">
+                                                <ul>
+                                                    <li>
+                                                        <i className="fal fa-check" /> 60-day chat
+                                                        history
+                                                    </li>
+                                                    <li>
+                                                        <i className="fal fa-check" /> Data security
+                                                    </li>
+                                                    <li>
+                                                        <i className="fal fa-check" /> 100 GB cloud
+                                                        storage
+                                                    </li>
+                                                    <li>
+                                                        <i className="fal fa-check" /> 24/7 Support
+                                                    </li>
+                                                </ul>
+                                                <div className="pricing-btn mt-35">
+                                                    <a className="main-btn" href="#">
+                                                        Choose plan
+                                                    </a>
+                                                </div>
+                                            </div> */}
+                                            <div className="pricing-btn mt-35">
+                                                <a className="main-btn" href="#">
+                                                    Tarifni tanlash
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-lg-4 col-md-6 wow animated fadeInRight mt-4">
+                                        <div className="pricing-one__single">
+                                            <div className="pricig-heading">
+                                                <h6>Mijoz talablariga mos</h6>
+                                                <div className="price-range">
+                                                    <span>Kelishilgan holda</span>
                                                 </div>
                                                 {/* <p>To'liq sotib olish 25mln so'm</p> */}
                                             </div>
