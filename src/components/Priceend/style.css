@@ -14,10 +14,11 @@
 }
 
 .button_price a {
-  background-color: #fcdf69 !important;
-  border: none !important;
-  transition: all ease-in-out 0.3s;
-  color: #292e3b !important;
+  color: #fff;
+}
+
+.button_price a:hover {
+  color: #fff;
 }
 
 .text_body_content p {
@@ -31,9 +32,17 @@
 .border_card {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 10px;
+  transition: all ease-in-out 0.3s;
+  display: flex;
+  align-items: center;
 }
 
-.border_card:hover {
+.border_card.border_yellow {
+  border-color: #fcdf69;
+}
+
+.border_card:hover,
+label:hover {
   cursor: pointer;
 }
 
@@ -52,3 +61,19 @@ input:focus {
   padding-bottom: 20px;
 }
 
+input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc; 
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="radio"]:checked {
+  border-color: #fcdf69; 
+  background-color: #fff;
+  border-width: 5px;
+}

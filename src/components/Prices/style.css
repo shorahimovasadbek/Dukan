@@ -15,6 +15,9 @@
 .text-warning_h1 {
   color: #fcdf69;
   margin: 40px 0;
+  font-size: 30px;
+  /* line-height: 27px !important; */
+  white-space: nowrap;
 }
 
 .span_text {
@@ -22,7 +25,7 @@
 }
 
 .span_text__bottom {
-  margin-left: 150px !important;
+  margin-left: 260px !important;
   display: block;
   color: rgba(252, 223, 105, 0.7);
 }
@@ -44,6 +47,10 @@
   margin-right: 10px !important;
 }
 
+.icon_done + span {
+  font-size: 15px;
+}
+
 .ul_list__price {
   line-height: 40px !important;
 }
@@ -58,6 +65,11 @@
 .button_price:hover {
   background-color: #fcdf69 !important;
   color: #1f2127 !important;
+}
+
+.button_price:hover + ul .icon_done{
+  background-color: #fcdf69 !important;
+  color: rgba(251, 252, 105, 0.16) !important;
 }
 
 .back_header {

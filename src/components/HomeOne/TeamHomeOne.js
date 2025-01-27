@@ -1,134 +1,180 @@
-import React, { useState } from 'react';
-import teamOne from '../../assets/newImages/abdufattoh.jpg';
-import teamSeven from '../../assets/newImages/ahror.jpg';
-import teamFive from '../../assets/newImages/asadbek.jpg';
-import teamThree from '../../assets/newImages/doniyor.jpg';
-import teamEight from '../../assets/newImages/hakimjon.jpg';
-import teamFour from '../../assets/newImages/sardor.jpg';
-import teamTwo from '../../assets/newImages/sherzod.jpg';
-import teamSix from '../../assets/newImages/tohir.jpg';
+import React, { useState, useEffect } from "react";
+import teamOne from "../../assets/newImages/abdufattoh.jpg";
+import teamSeven from "../../assets/newImages/ahror.jpg";
+import teamFive from "../../assets/newImages/asadbek.jpg";
+import teamThree from "../../assets/newImages/doniyor.jpg";
+import teamEight from "../../assets/newImages/hakimjon.jpg";
+import teamFour from "../../assets/newImages/sardor.jpg";
+import teamTwo from "../../assets/newImages/sherzod.jpg";
+import teamSix from "../../assets/newImages/tohir.jpg";
+import Drawer from "../Mobile/Drawer";
+import HomeOneHeader from "./HomeOneHeader";
+import FooterHomeOne from "./FooterHomeOne";
+import BackToTop from "../BackToTop";
+import useToggle from "../../Hooks/useToggle";
 
-function TeamHomeOne({ className,dark }) {
+function TeamHomeOne({ className, dark }) {
+  const data = [
+    {
+      id: 1,
+      img: teamOne,
+      name: "Abdufattoh Abdurahmonov",
+      role: "Project Manager",
+    },
+    {
+      id: 2,
+      img: teamTwo,
+      name: "Sherzod Abdujalilov",
+      role: "UI/UX designer",
+    },
+    {
+      id: 3,
+      img: teamThree,
+      name: "Doniyor Ashiraliyev",
+      role: "Mobile developer",
+    },
+    {
+      id: 4,
+      img: teamFour,
+      name: "Sardor Sattorov",
+      role: "Mobile developer",
+    },
+    {
+      id: 5,
+      img: teamFive,
+      name: "Asadbek Shorahimov",
+      role: "Frontend developer",
+    },
+    {
+      id: 6,
+      img: teamSix,
+      name: "Tohir Bahromov",
+      role: "Frontend developer",
+    },
+    {
+      id: 7,
+      img: teamSeven,
+      name: "Ahrorbek Abduvahobov",
+      role: "Frontend developer",
+    },
+    {
+      id: 8,
+      img: teamEight,
+      name: "Abduhakim Karimov",
+      role: "Backend developer",
+    },
+  ];
 
-    const data = [
-        {
-            id:1,
-            img:teamOne,
-            name:"Abdufattoh Abdurahmonov",
-            role:"Project Manager"
-        },
-        {
-            id:2,
-            img:teamTwo,
-            name:"Sherzod Abdujalilov",
-            role:"UI/UX designer"
-        },
-        {
-            id:3,
-            img:teamThree,
-            name:"Doniyor Ashiraliyev",
-            role:"Mobile developer"
-        },
-        {
-            id:4,
-            img:teamFour,
-            name:"Sardor Sattorov",
-            role:"Mobile developer"
-        },
-        {
-            id:5,
-            img:teamFive,
-            name:"Asadbek Shorahimov",
-            role:"Frontend developer"
-        },
-        {
-            id:6,
-            img:teamSix,
-            name:"Tohir Bahromov",
-            role:"Frontend developer"
-        },
-        {
-            id:7,
-            img:teamSeven,
-            name:"Ahrorbek Abduvahobov",
-            role:"Frontend developer"
-        },
-        {
-            id:8,
-            img:teamEight,
-            name:"Abduhakim Karimov",
-            role:"Backend developer"
-        },
-    ]
+  const [active, setActive] = useState(true);
+  const [drawer, drawerAction] = useToggle(false);
+  const [darkMode, setDarkMode] = useToggle(true);
 
-    const [active,setActive] = useState(true)
+  const handleScroll = () => {
+    setActive((prev) => !prev);
+  };
 
-    const handleScroll = () => {
-        setActive(prev => !prev)
+  useEffect(() => {
+
+    document.body.classList.add("appie-init");
+    if (darkMode) {
+      document.body.classList.add("appie-dark");
+    } else {
+      document.body.classList.remove("appie-dark");
     }
+    return () => {
+      document.body.classList.remove("appie-dark");
+    };
+  }, []);
 
-    return (
-        <>
-            <section className={`appie-team-area pt-90 pb-100 ${className || ''}`} id='team'>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="appie-section-title text-center">
-                                <h3 className="appie-title">Bizning jamoa</h3>
-                                <p>Jamoamizni tashkil etuvchi shaxslar bilan tanishing.</p>
-                            </div>
-                        </div>
+  return (
+    <>
+      <Drawer drawer={drawer} action={drawerAction.toggle} />
+      <HomeOneHeader
+        className={darkMode ? "appie-header-area-dark back_header" : ""}
+        dark={darkMode}
+        darkEnable
+        changeMode={setDarkMode.toggle}
+        action={drawerAction.toggle}
+      />
+      <section
+        className={`appie-team-area pt-90 pb-100 ${className || ""}`}
+        id="team"
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="appie-section-title text-center">
+                <h3 className="appie-title text-light">Bizning jamoa</h3>
+                <p className="text-light">Jamoamizni tashkil etuvchi shaxslar bilan tanishing.</p>
+              </div>
+            </div>
+          </div>
+          <div className={`row team-row ${dark ? "dark" : ""}`}>
+            <div className="mobile">
+              {data.map((d, i) => {
+                return (
+                  <div className="col-lg-3 col-md-6 item" key={i}>
+                    <div
+                      className="appie-team-item mt-30 wow animated fadeInUp"
+                      data-wow-duration="2000ms"
+                      data-wow-delay="200ms"
+                    >
+                      <div className="thumb">
+                        <img
+                          src={d.img}
+                          loading="lazy"
+                          alt=""
+                          className="lazy-load-img"
+                        />
+                      </div>
+                      <div className="content text-center">
+                        <h5 className="title">{d.name}</h5>
+                        <span>{d.role}</span>
+                      </div>
                     </div>
-                    <div className={`row team-row ${dark ? "dark" : ""}`}>
-                        <div className="mobile">
-                            {data.map((d,i) => {
-                                return (
-                                    <div className="col-lg-3 col-md-6 item" key={i}>
-                                        <div
-                                            className="appie-team-item mt-30 wow animated fadeInUp"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="200ms"
-                                        >
-                                            <div className="thumb">
-                                                <img src={d.img} loading='lazy' alt="" className='lazy-load-img' />
-                                            </div>
-                                            <div className="content text-center">
-                                                <h5 className="title">{d.name}</h5>
-                                                <span>{d.role}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div className="carouse_scroller" style={{transform: active ? "translateX(0)" : "translateX(-100%)"}}>
-                            {data.map(d => {
-                                return (
-                                    <div className="col-lg-3 col-md-6" key={d.id}>
-                                        <div
-                                            className="appie-team-item mt-30 wow animated fadeInUp"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="200ms"
-                                        >
-                                            <div className="thumb">
-                                                <img src={d.img} alt="" loading='lazy' />
-                                            </div>
-                                            <div className="content text-center">
-                                                <h5 className="title">{d.name}</h5>
-                                                <span>{d.role}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div className="left" onClick={handleScroll}><i class="fa-solid fa-chevron-left"></i></div>
-                        <div className="right" onClick={handleScroll}><i class="fa-solid fa-chevron-right"></i></div>
+                  </div>
+                );
+              })}
+            </div>
+            <div
+              className="carouse_scroller"
+              style={{
+                transform: active ? "translateX(0)" : "translateX(-100%)",
+              }}
+            >
+              {data.map((d) => {
+                return (
+                  <div className="col-lg-3 col-md-6" key={d.id}>
+                    <div
+                      className="appie-team-item mt-30 wow animated fadeInUp"
+                      data-wow-duration="2000ms"
+                      data-wow-delay="200ms"
+                    >
+                      <div className="thumb">
+                        <img src={d.img} alt="" loading="lazy" />
+                      </div>
+                      <div className="content text-center">
+                        <h5 className="title text-light">{d.name}</h5>
+                        <span>{d.role}</span>
+                      </div>
                     </div>
-                </div>
-            </section>
-        </>
-    );
+                  </div>
+                );
+              })}
+            </div>
+            <div className="left" onClick={handleScroll}>
+              <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div className="right" onClick={handleScroll}>
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+      <FooterHomeOne className={darkMode ? "appie-footer-area-dark" : ""} />
+      <BackToTop />
+    </>
+  );
 }
 
 export default TeamHomeOne;

@@ -45,7 +45,7 @@ function HomeOneHeader({
                         <div className="col-lg-4  col-md-7 col-sm-6 col-6 order-2 order-sm-3">
                             <div className="appie-btn-box text-right">
                                 <a href="tel:+998333138222" className='header-num'>
-                                    <i className="fal fa-phone" /> +998 33 313-82-22
+                                    <i className="fal fa-phone" /> +998 55 513 11 10
                                 </a>
                                 {langEnabled &&
                                     (lang ? (

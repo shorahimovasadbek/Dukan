@@ -12,6 +12,8 @@ import ChooseOne from "./components/ChooseOne";
 import Prices from "./components/Prices";
 import PricesPage from "./components/PricePage";
 import PricesPageend from "./components/Priceend";
+import TeamHomeOne from "./components/HomeOne/TeamHomeOne";
+import TanksPage from './components/TanksPage'
 
 function Routes() {
   const [loading, setLoading] = useState(true);
@@ -51,6 +53,8 @@ function Routes() {
               <Route exact path="/prices" component={Prices} />
               <Route exact path="/pricepage/:id" component={PricesPage} />
               <Route exact path="/pricepageend/:id" component={PricesPageend} />
+              <Route exact path="/team" component={TeamHomeOne}/>
+              <Route exact path="/thanks" component={TanksPage}/>
               {/* <Route exact path="/news/single-news" component={SingleNews} />
                                     <Route exact path="/service" component={Service} />
                                     <Route exact path="/about-us" component={AboutUs} />

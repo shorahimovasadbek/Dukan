@@ -13,20 +13,18 @@ import { ClipLoader } from "react-spinners";
 function Prices() {
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
-        const response = await getData.get('/api/tariffs')
-        setData(response.data)
-      }
-      catch (error) {
+        const response = await getData.get("/api/tariffs");
+        setData(response.data);
+      } catch (error) {
         console.log(error);
       }
-    }
-    fetchData()
+    };
+    fetchData();
 
     document.body.classList.add("appie-init");
     if (darkMode) {
@@ -39,6 +37,18 @@ function Prices() {
     };
   }, []);
 
+  function formatCurrency(amount) {
+    if (amount == 0) {
+      return "Kelishuv asosida";
+    }
+    return new Intl.NumberFormat("uz-UZ", {
+      useGrouping: true,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+      .format(amount)
+      .replace(/,/g, ".");
+  }
   return (
     <div className="bg-price">
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -55,23 +65,25 @@ function Prices() {
         <h6 className="text-light_h6 mb-4">
           Ehtiyojlaringizga mos keladigan eng yaxshi rejani tanlang.
         </h6>
-        <div className="row">
-          {
-            (data) ? data.map((item, index) => {
+        <div className="row justify-content-center">
+          {data ? (
+            data.map((item, index) => {
               return (
-                <div className="col-12 col-md-4" key={index}>
+                <div className="col-12 col-md-4 my-3" key={index}>
                   <div className="card card_price p-4">
                     <h4 className="text-center text-light mt-4">{item.name}</h4>
                     <p className="text-center text-light">
-                      Hamma uchun oddiy boshlanish
+                      {item.description ? item.description : ""}
                     </p>
-                    <h1 className="text-warning_h1 text-center">
-                      {item.price}
+                    <p className="text-warning_h1 text-center">
+                      {formatCurrency(item.price)}
                       <sub>
-                        <span className="span_text">mln</span>
+                        <span className="span_text">
+                          {item.price == 0 ? "" : "so'm"}
+                        </span>
                       </sub>
-                      <span className="span_text span_text__bottom">/oy</span>
-                    </h1>
+                      {/* <span className="span_text span_text__bottom">/oy</span> */}
+                    </p>
                     <ul className="ul_list__price">
                       <li className="d-flex justify-content-start align-items-center">
                         <i class="bi bi-check icon_done"></i>
@@ -87,7 +99,9 @@ function Prices() {
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i class="bi bi-check icon_done"></i>
-                        <span className="text-light">Elektron pochta marketingi</span>
+                        <span className="text-light">
+                          Elektron pochta marketingi
+                        </span>
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i class="bi bi-check icon_done"></i>
@@ -99,18 +113,24 @@ function Prices() {
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i class="bi bi-check icon_done"></i>
-                        <span className="text-light">Asosiy qo'llab-quvvatlash</span>
+                        <span className="text-light">
+                          Asosiy qo'llab-quvvatlash
+                        </span>
                       </li>
                     </ul>
 
-                    <Link to={`/pricepage/${item.id}`}><button className="btn btn-outline-warning w-100 button_price my-3">Sotib olish</button></Link>
+                    <Link to={`/pricepage/${item.id}`}>
+                      <button className="btn w-100 button_price my-3">
+                        Tarifni tanlash
+                      </button>
+                    </Link>
                   </div>
                 </div>
-              )
+              );
             })
-              :
-              <ClipLoader />
-          }
+          ) : (
+            <ClipLoader />
+          )}
 
           {/* <div className="col-12 col-md-4 my-5 my-md-0">
             <div className="card card_price p-4">

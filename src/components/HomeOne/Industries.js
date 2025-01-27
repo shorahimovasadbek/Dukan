@@ -39,7 +39,7 @@ function Industries({ className,dark }) {
         {
             id:6,
             img:img,
-            name:"Perfume/Kosmetika",
+            name:"Parfume/Kosmetika",
         },
         {
             id:7,

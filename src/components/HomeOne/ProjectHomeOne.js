@@ -3,6 +3,8 @@ import React, { useRef, useState } from "react";
 import projectThumb from "../../assets/newImages/call-center.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import getData from "../../services";
 
 function ProjectHomeOne({ className }) {
   // States
@@ -11,7 +13,7 @@ function ProjectHomeOne({ className }) {
   const [biznesType, setBiznesType] = useState("");
   const [tarifType, setTarifType] = useState("");
   const [connectTime, setConnectTime] = useState("");
-
+  const history = useHistory()
   const phoneRef = useRef(null);
 
   const telegram_bot_id = "1199763435:AAFqQXfb-I6OW5_S9TBBj6dJj_J7WGbwdiQ";
@@ -34,15 +36,33 @@ function ProjectHomeOne({ className }) {
       toast.error("Raqam kiritilmagan", {
         icon: false,
         theme: "colored",
+        autoClose: 2000
       });
     } else {
       if (phone.length < 9) {
         toast.error("Noto'g'ri raqam kiritdingiz", {
           icon: false,
           theme: "colored",
+          autoClose: 2000
         });
       } else {
         const message = `telefon: ${phone}, Name: ${name}, BiznesType: ${biznesType}, Ta'rifType: ${tarifType}, connectTime: ${connectTime}`;
+
+        const fetchData = async () => {
+          try {
+            const response = await getData.post(`/api/request/store`, {
+              full_name: name,
+              phone: phone,
+              business_type:biznesType,
+              interest_rate: tarifType,
+              callback_time: connectTime
+            })
+          }
+          catch (error) {
+            console.log(error);
+          }
+        }
+        fetchData()
 
         const settings = {
           chat_id,
@@ -55,12 +75,12 @@ function ProjectHomeOne({ className }) {
         toast.success("Muvaffaqiyatli jo'natildi", {
           icon: false,
           theme: "colored",
+          autoClose: 2000
         });
         setPhone("");
-        setName("")
-        setBiznesType("")
-        setConnectTime("")
-        setTarifType("")
+        setTimeout(() => {
+          history.push('/thanks')
+        }, 2000);
       }
     }
   };

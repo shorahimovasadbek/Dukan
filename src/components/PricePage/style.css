@@ -22,7 +22,7 @@
 }
 
 .modal-content {
-  background-color: transparent !important;
+  background-color: #292e3b !important;
   border: none !important;
 }
 
@@ -54,17 +54,15 @@
 }
 
 .carousel-control-next {
-  right: -70px !important;
-  z-index: 20000;
+  right: 70px !important;
 }
 
 .carousel-control-prev {
   left: -70px !important;
-  z-index: 20000;
 }
 
 .carousel-item img {
-  width: 95%;
+  width: 100%;
 }
 
 .carousel-item {
@@ -77,7 +75,7 @@
   background-color: #292e3b;
 }
 
-.button_price {
+ .button_price1{
   background-color: #fcdf69 !important;
   border: none !important;
   transition: all ease-in-out 0.3s;
@@ -104,7 +102,7 @@
 
 .modal-body::-webkit-scrollbar {
   width: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .modal-body::-webkit-scrollbar-track {
@@ -119,6 +117,30 @@
 
 .modal-body::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.opacity_content::placeholder{
+  color:#888888a2 !important;
+}
+
+.som_text{
+  font-size: 15px;
+}
+
+.div_more {
+  transform: translateY(-60px);
+  padding: 0 20px;
+}
+
+.div_more ~ img{
+  border-radius: 10px;
+}
+
+.div_more p{
+  background-color: rgba(0, 0,0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
 }
 
 @media only screen and (max-width: 992px) {

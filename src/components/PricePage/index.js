@@ -1,53 +1,217 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import HomeOneHeader from "../HomeOne/HomeOneHeader";
 import Drawer from "../Mobile/Drawer";
 import useToggle from "../../Hooks/useToggle";
 import FooterHomeOne from "../HomeOne/FooterHomeOne";
 import BackToTop from "../BackToTop";
-import modalImg from "../../assets/newImages/modalimg.png";
 import "./style.css";
-import img1 from "../../assets/newImages/img1.png";
-import img2 from "../../assets/newImages/img2.png";
-import img3 from "../../assets/newImages/img3.png";
 import img4 from "../../assets/newImages/Avatar.png";
 import Steeper from "../Steeper";
 import getData from "../../services";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { toast, ToastContainer } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 
 function Prices() {
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
-  const [data, setData] = useState('')
-  const params = useParams()
-  localStorage.setItem('tariffId', params.id)
+  const [data, setData] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [idThemeImg, setIdThemeImg] = useState([]);
+  const [user, setUser] = useState([]);
+  const [themes, setThemes] = useState("");
+  const [tariff, setTariff] = useState({});
+  const history = useHistory();
+  const [themeId, setThemeId] = useState(
+    localStorage.getItem("ThemeIdAnother")
+  );
+  const [userId, setUserId] = useState(localStorage.getItem("UserId"));
+  const [modalShow, setModalShow] = useState(!userId);
+  const params = useParams();
 
   useEffect(() => {
+    localStorage.setItem("TariffIdPrices", params.id);
+    setThemeId(localStorage.getItem("ThemeIdAnother"));
+    setUserId(localStorage.getItem("UserId"));
 
     const fetchData = async () => {
       try {
-        const response = await getData.post(`/api/order/store`, {'tariff_id': params.id})
-        setData(response.data.data.order_id)
-      }
-      catch (error) {
+        if (!themeId || !userId) return;
+
+        const [responseTheme, responseId] = await Promise.all([
+          getData.get(`/api/theme-images/${themeId}`),
+          getData.get(`/api/themes/${themeId}`),
+        ]);
+
+        setIdThemeImg(responseTheme.data);
+        setThemes(responseId.data);
+
+        const response = await getData.post(`/api/order/store`, {
+          tariff_id: params.id,
+          client_id: userId,
+          theme_id: themeId,
+        });
+
+        setData(response.data.data.order_id);
+      } catch (error) {
         console.log(error);
       }
-    }
-    fetchData()
+    };
+
+    fetchData();
 
     document.body.classList.add("appie-init");
-    if (darkMode) {
-      document.body.classList.add("appie-dark");
-    } else {
-      document.body.classList.remove("appie-dark");
-    }
+    document.body.classList.toggle("appie-dark", darkMode);
+
     return () => {
       document.body.classList.remove("appie-dark");
     };
-  }, []);
+  }, [themeId, userId]);
+
+
+
+  useEffect(() => {
+    const button = document.getElementById("buttonSend");
+    if (!button) return;
+    if (name.trim() !== "" && phone.trim() !== "" && company.trim() !== "") {
+      button.removeAttribute("disabled");
+    } else {
+      button.setAttribute("disabled", "false");
+    }
+  }, [name, phone, company]);
+
+  const SendUserPost = async () => {
+    try {
+      const responseTheme = await getData.post(`/api/clients`, {
+        full_name: name,
+        phone_number: phone,
+        company_name: company,
+      });
+      toast.success("Ma'lumotlaringiz muvaffaqiyatli yuborildi!", {
+        autoClose: 2000,
+      });
+      setUser(responseTheme.data);
+      localStorage.setItem("UserId", responseTheme.data[0].id);
+
+      const response = await getData.post(`/api/order/store`, {
+        tariff_id: params.id,
+        client_id: userId,
+        theme_id: themeId,
+      });
+      setData(response.data.data.order_id);
+
+      setInterval(() => {
+        history.push("/thanks");
+      }, 2000);
+    } catch (error) {
+      const errorMessage = extractErrorMessage(error);
+      toast.error(errorMessage, {
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    }
+  };
+
+  const extractErrorMessage = (error) => {
+    let firstError = [];
+    if (error.response && error.response.data && error.response.data.errors) {
+      const errors = error.response.data.errors;
+      Object.keys(errors).forEach((key) => {
+        errors[key].forEach((message) => {
+          firstError.push(message);
+        });
+      });
+    } else if (error.response.data.data && error.response.data.data.message) {
+      return error.response.data.message;
+    }
+    return firstError.join(" ");
+  };
+
+  function SendButton() {
+    SendUserPost();
+    setModalShow(false);
+  }
+
+  function formatCurrency(amount) {
+    return new Intl.NumberFormat("uz-UZ", {
+      useGrouping: true,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+      .format(amount)
+      .replace(/,/g, ".");
+  }
 
   return (
     <div className="bg-price">
+      <Modal
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={modalShow}
+      >
+        <Modal.Header>
+          <Modal.Title
+            className="text-light"
+            id="contained-modal-title-vcenter"
+          >
+            Mijoz m'alumotlarini kiriting.
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="row">
+            <div className="col-12">
+              <input
+                type="text"
+                className="opacity_content form-control"
+                placeholder="Ismingizni kiriting."
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="col-12 my-3">
+              <label class="sr-only" for="inlineFormInputGroup">
+                Username
+              </label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">+998</div>
+                </div>
+                <input
+                  type="number"
+                  className="form-control opacity_content"
+                  placeholder="Telefon raqamingizni kiriting."
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="col-12">
+              <input
+                type="text"
+                className="opacity_content form-control"
+                placeholder="Kompaniya nomini kiriting."
+                onChange={(e) => setCompany(e.target.value)}
+              />
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="btn btn-warning"
+            onClick={SendButton}
+            id="buttonSend"
+          >
+            Yuborish
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <Drawer drawer={drawer} action={drawerAction.toggle} />
       <HomeOneHeader
         className={darkMode ? "appie-header-area-dark back_header" : ""}
@@ -70,7 +234,22 @@ function Prices() {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              <img src={modalImg} />
+              <img
+                className="w-100 rounded rounded-5"
+                src={
+                  themes.image ? (
+                    process.env.REACT_APP_BASE_URL + themes.image
+                  ) : (
+                    <ClipLoader />
+                  )
+                }
+              />
+              <div className="d-flex justify-content-between div_more">
+                <p>1/{themes ? themes.images.length : ""}</p>
+                <p>
+                  <i class="bi bi-aspect-ratio"></i>
+                </p>
+              </div>
             </div>
 
             <div
@@ -96,16 +275,22 @@ function Prices() {
                       class="carousel slide carousel-fade"
                       data-ride="carousel"
                     >
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img src={img1} alt="..." />
-                        </div>
-                        <div class="carousel-item">
-                          <img src={img2} alt="..." />
-                        </div>
-                        <div class="carousel-item">
-                          <img src={img3} alt="..." />
-                        </div>
+                      <div className="carousel-inner">
+                        {idThemeImg &&
+                          idThemeImg.length > 0 &&
+                          idThemeImg.map((item, index) => (
+                            <div
+                              className={`carousel-item ${
+                                index === 0 ? "active" : ""
+                              }`}
+                              key={index}
+                            >
+                              <img
+                                src={`${process.env.REACT_APP_BASE_URL}${item.image_path}`}
+                                alt="..."
+                              />
+                            </div>
+                          ))}
                       </div>
                     </div>
                   </div>
@@ -139,23 +324,36 @@ function Prices() {
           </div>
           <div className="col-12 col-md-4 mt-5 mt-md-0">
             <div className="card p-4 pt-5 card_price_content">
-              <h1 className="text-center text-light mb-4">$56.77</h1>
+              {themes ? (
+                <>
+                  <h1 className="text-center text-light mb-4">
+                    {formatCurrency(themes.price)}{" "}
+                    <span className="som_text">so'm</span>
+                  </h1>
+                  {/* <div className="d-flex justify-content-between align-items-center text_body_content">
+                    <p>Ta'rif narxi:</p>
+                    <p>{formatCurrency(tariff.price)}</p>
+                  </div> */}
+                  {/* <div className="d-flex justify-content-between align-items-center text_body_content">
+                    <p>Shablon narxi:</p>
+                    <p>{formatCurrency(themes.price)}</p>
+                  </div> */}
+                </>
+              ) : (
+                <ClipLoader />
+              )}
               <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Obuna</p>
-                <p>$85.99</p>
+                <p>Chegirma:</p>
+                <p>0</p>
               </div>
+              {/* <hr className="bg-light" />
               <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Soliq</p>
-                <p>$4.99</p>
-              </div>
-              <hr className="bg-light" />
-              <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Jami</p>
-                <p>$90.98</p>
-              </div>
+                <p>Jami:</p>
+                <p>{formatCurrency(themes.price + tariff.price)}</p>
+              </div> */}
               <Link to={`/pricepageend/${data}`}>
-                <button className="btn btn-outline-warning w-100 button_price my-3">
-                  Sotib olish <i class="bi bi-arrow-right"></i>
+                <button className="btn btn-outline-warning w-100 button_price1 my-3">
+                  Keyingisi <i class="bi bi-arrow-right"></i>
                 </button>
               </Link>
             </div>
@@ -217,7 +415,7 @@ function Prices() {
           </div>
         </div>
       </div>
-
+      <ToastContainer />
       <FooterHomeOne className={darkMode ? "appie-footer-area-dark" : ""} />
       <BackToTop />
     </div>

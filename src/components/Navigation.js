@@ -121,6 +121,9 @@ function Navigation({ lang = false }) {
                         <a href={`${isHome ? "#pricing" : "/#pricing"}`} className={activeSection == "pricing" ? "active" : ""}>Narxlar</a>
                     </li>
                     <li>
+                        <a href={`${isHome ? "/blogs" : "/blogs"}`} className={activeSection == "blogs" ? "active" : ""}>Blog</a>
+                    </li>
+                    <li>
                         <a href={`${isHome ? "#contact_" : "/#contact_"}`} className={activeSection == "contact_" ? "active" : ""}>Aloqa</a>
                     </li>
                 </ul>

@@ -52,17 +52,17 @@ function FooterHomeOne({ className }) {
                             <div className="footer-navigation">
                                 <h4 className="title">Kompaniya</h4>
                                 <ul>
-                                    <li>
+                                    {/* <li>
                                         <a href={`${isHome ? "#features" : "/"}`}>Afzalliklarimiz</a>
-                                    </li>
-                                    <li>
+                                    </li> */}
+                                    {/* <li>
                                         <a href={`${isHome ? "#about-us" : "/"}`}>Biz haqimizda</a>
+                                    </li> */}
+                                    <li>
+                                        <a href={`${isHome ? "/team" : "/"}`}>Jamoamiz</a>
                                     </li>
                                     <li>
-                                        <a href={`${isHome ? "#team" : "/"}`}>Jamoamiz</a>
-                                    </li>
-                                    <li>
-                                        <a href={`${isHome ? "#blogs" : "/"}`}>Blog</a>
+                                        <a href={`${isHome ? "/blogs" : "/"}`}>Blog</a>
                                     </li>
                                     <li>
                                         <a href={`${isHome ? "#contact_" : "/"}`}>Aloqa</a>
@@ -103,7 +103,7 @@ function FooterHomeOne({ className }) {
                                     </li>
                                     <li>
                                         <a href="tel:+998333138222">
-                                            <i className="fal fa-phone" /> +998 33 313-82-22
+                                            <i className="fal fa-phone" /> +998 55 513 11 10
                                         </a>
                                     </li>
                                     <li>
@@ -112,7 +112,7 @@ function FooterHomeOne({ className }) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://al-raqam.com/">
+                                        <a href="https://al-raqam.com/" target='_blank'>
                                             <i className="fa-solid fa-laptop" />al-raqam.com
                                         </a>
                                     </li>

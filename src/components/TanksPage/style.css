@@ -1,0 +1,9 @@
+.tahnksPage{
+    height: 70vh;
+    transform: translateY(50%);
+}
+
+.tahnksPage_child{
+    text-align: center;
+    color: #fff;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom/cjs/react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom/cjs/react-router-dom";
 import kosmetika from "../../assets/newImages/iframe1.png";
 import mebel from "../../assets/newImages/iframe2.png";
 import oziqovqat from "../../assets/newImages/iframe3.png";
@@ -24,6 +24,7 @@ function ChooseRoute() {
   const [darkMode, setDarkMode] = useToggle(true);
   const [data, setData] = useState([])
   const useparams = useParams()
+  const history = useHistory()
   localStorage.setItem('themeId', useparams.id)
 
   useEffect(() => {
@@ -49,6 +50,27 @@ function ChooseRoute() {
       document.body.classList.remove("appie-dark");
     };
   }, []);
+
+  function MovePrices (id) {
+    localStorage.setItem("ThemeIdAnother", id)
+    if(localStorage.getItem('TariffIdPrices')){
+      history.push(`/pricepage/${localStorage.getItem('TariffIdPrices')}`)
+      localStorage.removeItem('TariffIdPrices')
+    }else{
+      history.push('/prices')
+    }
+  }
+
+  function formatCurrency(amount) {
+    return new Intl.NumberFormat("uz-UZ", {
+      useGrouping: true,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+      .format(amount)
+      .replace(/,/g, ".");
+  }
+
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -73,7 +95,7 @@ function ChooseRoute() {
                   return (
                     <div className='col-12 col-md-4 justify-content-center d-flex my-4' key={index}>
                       <div className="parent_icons__choose">
-                        <Link to="/prices">
+                        <Link onClick={() => MovePrices(item.id)}>
                           <div className="d-flex icons_choose">
                             <p>
                               <i class="bi bi-cart2"></i>
@@ -86,12 +108,12 @@ function ChooseRoute() {
                             </p>
                           </div>
                         </Link>
-                        <Link to={`/prices`}>
+                        <Link onClick={() => MovePrices(item.id)}>
                           <img className="imgNow1" src={(item.image != null) ? process.env.REACT_APP_BASE_URL + item.image : kosmetika} />
                           <h5 className="text-light mt-4">
                             {item.name}
                           </h5>
-                          <p className="text-light">{item.price}</p>
+                          <p className="text-light">{formatCurrency(item.price)} so'm</p>
                         </Link>
                       </div>
                     </div>

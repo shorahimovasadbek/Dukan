@@ -48,7 +48,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 4,
       icon: "fa-solid fa-spray-can-sparkles",
-      name: "Perfume/Kosmetika",
+      name: "Parfume/Kosmetika",
       img: kosmetika,
       title: "",
       text: "",

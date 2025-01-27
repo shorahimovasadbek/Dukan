@@ -44,7 +44,7 @@ img {
 }
 
 .imgNow{
-  width: 373px;
+  /* width: 373px; */
   height: 227px;
   object-fit: contain;
 }
@@ -157,6 +157,11 @@ p {
 .links-header{
   width: max-content;
 }
+
+.tarifCard{
+  height: 560px;
+}
+
 @media(max-width:1200px){
   .header-num{
     position: absolute;

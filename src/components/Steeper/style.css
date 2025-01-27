@@ -1,26 +1,56 @@
-.steeper_step span:nth-child(2) a{
-    color: white !important;
+.steeper_step {
+  font-family: "Public Sans" !important;
 }
 
-.steeper_step span:nth-child(2){
-    transform: translateY(-230%);
+.steeper_step span:nth-child(2) a {
+  color: white !important;
 }
 
-.steeper_step span:nth-child(1) a{
-    color: white !important;
+.steeper_step span:nth-child(2) {
+  transform: translateY(-200%);
 }
 
-.steeper_step span svg{
-    font-size: 30px !important;
-    color: #00C46E;
+.steeper_step span:nth-child(1) a {
+  color: white !important;
 }
 
-@media only screen and (max-width: 992px){
-    .steeper_step span:nth-child(2){
-        font-size: 12px !important;
-    }
-    
-    .steeper_step span:nth-child(1){
-        font-size: 12px !important;
-    }
+.steeper_step span svg {
+  font-size: 30px !important;
+  color: #00c46e;
+}
+
+@media only screen and (max-width: 992px) {
+  .steeper_step span:nth-child(2) {
+    font-size: 12px !important;
+  }
+
+  .steeper_step span:nth-child(1) {
+    font-size: 12px !important;
+  }
+}
+
+.MuiStepLabel-iconContainer {
+  border: 2px solid #00c46e;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MuiStepIcon-root {
+  color: #00c46e !important;
+}
+
+.MuiStepLabel-label {
+  font-size: 16px;
+  font-family: "Public Sans";
+  color: #fff;
+}
+
+.MuiStepLabel-label.Mui-active {
+  font-weight: bold;
+  color: #00c46e;
 }

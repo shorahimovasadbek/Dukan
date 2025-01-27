@@ -40,7 +40,7 @@ function NowStart({ dark }) {
                                     if (index < 6) {
                                         return (
                                             <div className='col-12 col-md-4 justify-content-center d-flex my-4' key={index}>
-                                                <Link to="/categories">
+                                                <Link to= {`/theme/${item.id}`}>
                                                     <img className='imgNow' src={(item.image != null) ? process.env.REACT_APP_BASE_URL + item.image : kosmetika} />
                                                     <h5 className='text-light mt-4'>{item.name}</h5>
                                                     {/* <p className='text-light'>443 templates</p> */}
