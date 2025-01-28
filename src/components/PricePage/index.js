@@ -27,22 +27,23 @@ function Prices() {
   const [themes, setThemes] = useState("");
   const [tariff, setTariff] = useState({});
   const history = useHistory();
-  const [themeId, setThemeId] = useState(
-    localStorage.getItem("ThemeIdAnother")
+  const [themeId, setThemeId] = useState(localStorage.getItem("themeIdChild"));
+  const [themeIdCategory, setThemeIdCategory] = useState(
+    localStorage.getItem("themeId")
   );
   const [userId, setUserId] = useState(localStorage.getItem("UserId"));
+  const [userInfo, setUserInfo] = useState(localStorage.getItem("UserInfo"));
   const [modalShow, setModalShow] = useState(!userId);
   const params = useParams();
 
   useEffect(() => {
-    localStorage.setItem("TariffIdPrices", params.id);
-    setThemeId(localStorage.getItem("ThemeIdAnother"));
+    setThemeId(localStorage.getItem("themeIdChild"));
     setUserId(localStorage.getItem("UserId"));
+    setThemeIdCategory(localStorage.getItem("themeId"));
+    setUserInfo(JSON.parse(localStorage.getItem("UserInfo")));
 
     const fetchData = async () => {
       try {
-        if (!themeId || !userId) return;
-
         const [responseTheme, responseId] = await Promise.all([
           getData.get(`/api/theme-images/${themeId}`),
           getData.get(`/api/themes/${themeId}`),
@@ -50,14 +51,6 @@ function Prices() {
 
         setIdThemeImg(responseTheme.data);
         setThemes(responseId.data);
-
-        const response = await getData.post(`/api/order/store`, {
-          tariff_id: params.id,
-          client_id: userId,
-          theme_id: themeId,
-        });
-
-        setData(response.data.data.order_id);
       } catch (error) {
         console.log(error);
       }
@@ -71,9 +64,7 @@ function Prices() {
     return () => {
       document.body.classList.remove("appie-dark");
     };
-  }, [themeId, userId]);
-
-
+  }, [themeId, userId, params.id]);
 
   useEffect(() => {
     const button = document.getElementById("buttonSend");
@@ -93,19 +84,14 @@ function Prices() {
         company_name: company,
       });
       toast.success("Ma'lumotlaringiz muvaffaqiyatli yuborildi!", {
-        autoClose: 2000,
+        autoClose: 1000,
       });
       setUser(responseTheme.data);
       localStorage.setItem("UserId", responseTheme.data[0].id);
+      localStorage.setItem("UserInfo", JSON.stringify(responseTheme.data));
+      console.log(JSON.parse(localStorage.getItem("UserInfo")));
 
-      const response = await getData.post(`/api/order/store`, {
-        tariff_id: params.id,
-        client_id: userId,
-        theme_id: themeId,
-      });
-      setData(response.data.data.order_id);
-
-      setInterval(() => {
+      setTimeout(() => {
         history.push("/thanks");
       }, 2000);
     } catch (error) {
@@ -156,6 +142,7 @@ function Prices() {
         aria-labelledby="contained-modal-title-vcenter"
         centered
         show={modalShow}
+        className="modal_user__info"
       >
         <Modal.Header>
           <Modal.Title
@@ -222,6 +209,13 @@ function Prices() {
       />
       <div className="container choosesection">
         <Steeper number={3} />
+        <div className="">
+          <Link to={`/theme/${themeIdCategory}`}>
+            <button className="btn btn-outline-warning w-100 button_price1 my-3">
+              <i class="bi bi-arrow-left"></i> Orqaga qaytish
+            </button>
+          </Link>
+        </div>
         <h5 className="text-light mb-2">Cosmetics Landing Page Divi Layout</h5>
         <h6 className="text-light_h6 mb-4">
           World-class designs with original photos and graphics available for
@@ -240,16 +234,24 @@ function Prices() {
                   themes.image ? (
                     process.env.REACT_APP_BASE_URL + themes.image
                   ) : (
-                    <ClipLoader />
+                    <div className="text-center text-light">
+                      <ClipLoader color="#ffffff" />
+                    </div>
                   )
                 }
               />
-              <div className="d-flex justify-content-between div_more">
-                <p>1/{themes ? themes.images.length : ""}</p>
-                <p>
-                  <i class="bi bi-aspect-ratio"></i>
-                </p>
-              </div>
+              {themes ? (
+                <div className="d-flex justify-content-between div_more">
+                  <p>1/{themes ? themes.images.length : ""}</p>
+                  <p>
+                    <i class="bi bi-aspect-ratio"></i>
+                  </p>
+                </div>
+              ) : (
+                <div className="text-center text-light">
+                  <ClipLoader color="#ffffff" />
+                </div>
+              )}
             </div>
 
             <div
@@ -275,9 +277,29 @@ function Prices() {
                       class="carousel slide carousel-fade"
                       data-ride="carousel"
                     >
+                      <div class="carousel-indicators">
+                        {idThemeImg ? (
+                          idThemeImg.map((item, index) => (
+                            <button
+                              type="button"
+                              data-bs-target="#carouselExampleIndicators"
+                              data-bs-slide-to={index}
+                              aria-current={index === 0 ? true : ""}
+                              className={` button_indicators d-none d-md-block ${
+                                index === 0 ? "active" : ""
+                              }`}
+                              aria-label={`Slide ${index}`}
+                            ></button>
+                          ))
+                        ) : (
+                          <div className="text-center text-light">
+                            <ClipLoader color="#ffffff" />
+                          </div>
+                        )}
+                      </div>
+
                       <div className="carousel-inner">
-                        {idThemeImg &&
-                          idThemeImg.length > 0 &&
+                        {idThemeImg && idThemeImg.length > 0 ? (
                           idThemeImg.map((item, index) => (
                             <div
                               className={`carousel-item ${
@@ -285,12 +307,23 @@ function Prices() {
                               }`}
                               key={index}
                             >
-                              <img
-                                src={`${process.env.REACT_APP_BASE_URL}${item.image_path}`}
-                                alt="..."
-                              />
+                              {item.image_path ? (
+                                <img
+                                  src={`${process.env.REACT_APP_BASE_URL}${item.image_path}`}
+                                  alt="..."
+                                />
+                              ) : (
+                                <div className="text-center text-light">
+                                  <ClipLoader color="#ffffff" />
+                                </div>
+                              )}
                             </div>
-                          ))}
+                          ))
+                        ) : (
+                          <div className="text-center text-light">
+                            <ClipLoader color="#ffffff" />
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -326,32 +359,41 @@ function Prices() {
             <div className="card p-4 pt-5 card_price_content">
               {themes ? (
                 <>
+                  {userInfo ? (
+                    <>
+                      <div>
+                        <h4 className="text-light">
+                          Companiya: {userInfo[0].company_name}
+                        </h4>
+                        <h4 className="text-light">
+                          Ismi: {userInfo[0].full_name}
+                        </h4>
+                        <h4 className="text-light">
+                          Telefon raqami: {userInfo[0].phone_number}
+                        </h4>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-center text-light">
+                      <ClipLoader color="#ffffff" />
+                    </div>
+                  )}
+                  <hr className="bg-light" />
                   <h1 className="text-center text-light mb-4">
                     {formatCurrency(themes.price)}{" "}
                     <span className="som_text">so'm</span>
                   </h1>
-                  {/* <div className="d-flex justify-content-between align-items-center text_body_content">
-                    <p>Ta'rif narxi:</p>
-                    <p>{formatCurrency(tariff.price)}</p>
-                  </div> */}
-                  {/* <div className="d-flex justify-content-between align-items-center text_body_content">
-                    <p>Shablon narxi:</p>
-                    <p>{formatCurrency(themes.price)}</p>
-                  </div> */}
                 </>
               ) : (
-                <ClipLoader />
+                <div className="text-center text-light">
+                  <ClipLoader color="#ffffff" />
+                </div>
               )}
               <div className="d-flex justify-content-between align-items-center text_body_content">
                 <p>Chegirma:</p>
                 <p>0</p>
               </div>
-              {/* <hr className="bg-light" />
-              <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Jami:</p>
-                <p>{formatCurrency(themes.price + tariff.price)}</p>
-              </div> */}
-              <Link to={`/pricepageend/${data}`}>
+              <Link to={`/prices`}>
                 <button className="btn btn-outline-warning w-100 button_price1 my-3">
                   Keyingisi <i class="bi bi-arrow-right"></i>
                 </button>
@@ -413,6 +455,13 @@ function Prices() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="d-flex justify-content-start">
+          <Link to={`/theme/${themeIdCategory}`}>
+            <button className="btn btn-outline-warning w-100 button_price1 my-3">
+              <i class="bi bi-arrow-left"></i> Orqaga qaytish
+            </button>
+          </Link>
         </div>
       </div>
       <ToastContainer />

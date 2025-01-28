@@ -20,20 +20,16 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .steeper_step span:nth-child(2) {
-    font-size: 12px !important;
-  }
-
-  .steeper_step span:nth-child(1) {
-    font-size: 12px !important;
+  .steeper_step span {
+    font-size: 10px !important;
   }
 }
 
 .MuiStepLabel-iconContainer {
   border: 2px solid #00c46e;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -41,7 +37,7 @@
 }
 
 .MuiStepIcon-root {
-  color: #00c46e !important;
+  color: transparent !important;
 }
 
 .MuiStepLabel-label {
@@ -50,6 +46,12 @@
   color: #fff;
 }
 
+/* O'tgan qadamlarni yashil qilish */
+.MuiStepIcon-root.Mui-completed {
+  color: #00c46e !important;
+}
+
+/* Faol qadam */
 .MuiStepLabel-label.Mui-active {
   font-weight: bold;
   color: #00c46e;

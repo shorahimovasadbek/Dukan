@@ -50,7 +50,9 @@ function NowStart({ dark }) {
                                     }
                                 })
                                 :
-                                <ClipLoader />
+                                <div className="text-center text-light">
+  <ClipLoader color="#ffffff"  />
+</div>
                         }
                         {/* <div className='col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0'>
                             <Link to="/chooseroute">

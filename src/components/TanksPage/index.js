@@ -13,21 +13,17 @@ function Prices() {
   const [darkMode, setDarkMode] = useToggle(true);
 
   const [themeId, setThemeId] = useState(
-    localStorage.getItem("ThemeIdAnother")
-  );
-  const [tariffId, setTariffId] = useState(
-    localStorage.getItem("TariffIdPrices")
+    localStorage.getItem("themeIdChild")
   );
 
   useEffect(() => {
+    setThemeId(localStorage.getItem("themeIdChild"));
     document.body.classList.add("appie-init");
     if (darkMode) {
       document.body.classList.add("appie-dark");
     } else {
       document.body.classList.remove("appie-dark");
     }
-    setThemeId(localStorage.getItem("ThemeIdAnother"));
-    setTariffId(localStorage.getItem("TariffIdPrices"));
     return () => {
       document.body.classList.remove("appie-dark");
     };
@@ -49,7 +45,7 @@ function Prices() {
           Arizangiz muvaffaqiyatli qabul qilindi!!!
         </h1>
         <div className="text-center mt-5">
-          <Link to={themeId ? `/pricepage/${tariffId}` : "/"}>
+          <Link to={themeId ? `/pricepage/${themeId}` : "/"}>
             <Button variant="warning">
               {themeId ? "Sahifaga qaytish" : "Xaridni davom ettiring"}
               <i className="bi bi-arrow-right"></i>

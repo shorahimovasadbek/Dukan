@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useHistory } from "react-router-dom/cjs/react-router-dom";
+import {
+  Link,
+  useParams,
+  useHistory,
+} from "react-router-dom/cjs/react-router-dom";
 import kosmetika from "../../assets/newImages/iframe1.png";
-import mebel from "../../assets/newImages/iframe2.png";
-import oziqovqat from "../../assets/newImages/iframe3.png";
-import kiyimkechak from "../../assets/newImages/image (3).png";
-import electronika from "../../assets/newImages/image (4).png";
-import shifoxona from "../../assets/newImages/image (5).png";
-import shifoxona1 from "../../assets/newImages/image (6).png";
-import shifoxona2 from "../../assets/newImages/image (7).png";
-import shifoxona3 from "../../assets/newImages/image8.png";
 import HomeOneHeader from "../HomeOne/HomeOneHeader";
 import Drawer from "../Mobile/Drawer";
 import useToggle from "../../Hooks/useToggle";
@@ -22,23 +18,21 @@ import getData from "../../services";
 function ChooseRoute() {
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
-  const [data, setData] = useState([])
-  const useparams = useParams()
-  const history = useHistory()
-  localStorage.setItem('themeId', useparams.id)
+  const [data, setData] = useState([]);
+  const useparams = useParams();
+  const history = useHistory();
+  localStorage.setItem("themeId", useparams.id);
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
-        const response = await getData.get(`/api/categories/${useparams.id}`)
-        setData(response.data)
-      }
-      catch (error) {
+        const response = await getData.get(`/api/categories/${useparams.id}`);
+        setData(response.data);
+      } catch (error) {
         console.log(error);
       }
-    }
-    fetchData()
+    };
+    fetchData();
 
     document.body.classList.add("appie-init");
     if (darkMode) {
@@ -51,14 +45,9 @@ function ChooseRoute() {
     };
   }, []);
 
-  function MovePrices (id) {
-    localStorage.setItem("ThemeIdAnother", id)
-    if(localStorage.getItem('TariffIdPrices')){
-      history.push(`/pricepage/${localStorage.getItem('TariffIdPrices')}`)
-      localStorage.removeItem('TariffIdPrices')
-    }else{
-      history.push('/prices')
-    }
+  function MovePrices(id) {
+    localStorage.setItem("themeIdChild", id);
+    history.push(`/pricepage/${id}`);
   }
 
   function formatCurrency(amount) {
@@ -88,232 +77,50 @@ function ChooseRoute() {
             O'zingiz Yoqtirgan Web-Sayt Shablonini Tanlang
           </h5>
           <div className="row">
-
-            {
-              (data && data.themes) ?
-                data.themes?.map((item, index) => {
-                  return (
-                    <div className='col-12 col-md-4 justify-content-center d-flex my-4' key={index}>
-                      <div className="parent_icons__choose">
-                        <Link onClick={() => MovePrices(item.id)}>
-                          <div className="d-flex icons_choose">
-                            <p>
-                              <i class="bi bi-cart2"></i>
-                            </p>
-                            <p>
-                              <i class="bi bi-list mx-4"></i>
-                            </p>
-                            <p>
-                              <i class="bi bi-eye"></i>
-                            </p>
-                          </div>
-                        </Link>
-                        <Link onClick={() => MovePrices(item.id)}>
-                          <img className="imgNow1" src={(item.image != null) ? process.env.REACT_APP_BASE_URL + item.image : kosmetika} />
-                          <h5 className="text-light mt-4">
-                            {item.name}
-                          </h5>
-                          <p className="text-light">{formatCurrency(item.price)} so'm</p>
-                        </Link>
-                      </div>
+            {data && data.themes ? (
+              data.themes?.map((item, index) => {
+                return (
+                  <div
+                    className="col-12 col-md-4 justify-content-center d-flex my-4"
+                    key={index}
+                  >
+                    <div className="parent_icons__choose">
+                      <Link onClick={() => MovePrices(item.id)}>
+                        <div className="d-flex icons_choose">
+                          <p>
+                            <i class="bi bi-cart2"></i>
+                          </p>
+                          <p>
+                            <i class="bi bi-list mx-4"></i>
+                          </p>
+                          <p>
+                            <i class="bi bi-eye"></i>
+                          </p>
+                        </div>
+                      </Link>
+                      <Link onClick={() => MovePrices(item.id)}>
+                        <img
+                          className="imgNow1"
+                          src={
+                            item.image != null
+                              ? process.env.REACT_APP_BASE_URL + item.image
+                              : kosmetika
+                          }
+                        />
+                        <h5 className="text-light mt-4">{item.name}</h5>
+                        <p className="text-light">
+                          {formatCurrency(item.price)} so'm
+                        </p>
+                      </Link>
                     </div>
-                  )
-                })
-                :
-                <ClipLoader />
-            }
-            {/* <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
                   </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={mebel} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">47$</p>
-                </Link>
+                );
+              })
+            ) : (
+              <div className="text-center text-light">
+                <ClipLoader color="#ffffff" />
               </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5 mt-md-0">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={oziqovqat} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">23$</p>
-                </Link>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={kiyimkechak} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">90$</p>
-                </Link>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={electronika} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">56$</p>
-                </Link>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={shifoxona} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">34$</p>
-                </Link>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={shifoxona1} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">89$</p>
-                </Link>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={shifoxona2} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">62$</p>
-                </Link>
-              </div>
-            </div>
-            <div className="col-12 col-md-4 justify-content-center d-flex mt-5">
-              <div className="parent_icons__choose">
-                <Link to="/prices">
-                  <div className="d-flex icons_choose">
-                    <p>
-                      <i class="bi bi-cart2"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-list mx-4"></i>
-                    </p>
-                    <p>
-                      <i class="bi bi-eye"></i>
-                    </p>
-                  </div>
-                </Link>
-                <Link to="/prices">
-                  <img className="imgNow1" src={shifoxona3} />
-                  <h5 className="text-light mt-4">
-                    Modern Skincare Website with Product Photography
-                  </h5>
-                  <p className="text-light">45$</p>
-                </Link>
-              </div>
-            </div> */}
+            )}
           </div>
           <div className="d-flex justify-content-center mt-5">
             <Link to="#">

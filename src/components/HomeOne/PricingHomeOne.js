@@ -428,7 +428,9 @@ function PricingHomeOne({ className }) {
                 );
               })
             ) : (
-              <ClipLoader />
+              <div className="text-center text-light">
+  <ClipLoader color="#ffffff"  />
+</div>
             )}
           </div>
         </div>

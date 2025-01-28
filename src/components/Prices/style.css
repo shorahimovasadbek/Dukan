@@ -47,6 +47,11 @@
   margin-right: 10px !important;
 }
 
+.icon_done__another{
+  color: #292e3c !important;
+  background-color: rgba(252, 223, 105, 1) !important;
+}
+
 .icon_done + span {
   font-size: 15px;
 }
@@ -75,4 +80,8 @@
 .back_header {
   background-color: #292e3c;
   padding-bottom: 20px;
+}
+
+.borderTarif{
+  border-color: #fcdf69 !important;
 }
