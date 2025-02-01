@@ -321,25 +321,25 @@ function Drawer({ drawer, action, lang }) {
                                             <ul>
                                                 <li>
                                                     <a href="mailto:alraqam@al-raqam.com">
-                                                        <i className="fal fa-envelope"></i>{' '}
+                                                        <i className="fal fa-envelope pe-1"></i>{' '}
                                                         alraqam@al-raqam.com
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="tel:+998333138222">
-                                                        <i className="fal fa-phone"></i> +998 33 313-82-22
+                                                        <i className="fal fa-phone pe-1"></i> +998 33 313-82-22
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="#">
-                                                        <i className="fal fa-map-marker-alt"></i>{' '}
+                                                        <i className="fal fa-map-marker-alt pe-1"></i>{' '}
                                                         Toshkent sh. Yunusobod tumani, Anorzor mahallasi, Oqilota ko'chasi
                                                         26-11. 100099
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="https://al-raqam.com/">
-                                                        <i className="fa-solid fa-laptop" />al-raqam.com
+                                                        <i className="fa-solid fa-laptop pe-1" />al-raqam.com
                                                     </a>
                                                 </li>
                                             </ul>

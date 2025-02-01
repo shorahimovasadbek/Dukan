@@ -61,6 +61,9 @@ function Prices() {
         autoClose: 1000,
       });
       setTimeout(() => {
+        localStorage.removeItem('themeId')
+        localStorage.removeItem('themeIdChild')
+        localStorage.removeItem('TariffIdPrices')
         window.location.replace("/");
       }, 1000);
     } catch (error) {
@@ -89,6 +92,8 @@ function Prices() {
 
         setPaymentList(paymentList.data.data.providers);
         setThemes(responseId.data);
+        console.log(themes.image,' bu themeni imagesi ');
+        
         setTariff(responseTariff.data);
       } catch (error) {
         console.log(error);
