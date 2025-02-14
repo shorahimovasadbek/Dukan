@@ -6,19 +6,21 @@ import FooterHomeOne from '../HomeOne/FooterHomeOne';
 import HomeOneHeader from '../HomeOne/HomeOneHeader';
 import Drawer from '../Mobile/Drawer';
 import SingleBlog from './SingleBlog';
+import { useTranslation } from 'react-i18next';
 function Blog() {
+    const {t} = useTranslation()
     const [drawer, drawerAction] = useToggle(false);
     return (
         <>
           <div className="singleblog_wrapper">
             <Drawer drawer={drawer} action={drawerAction.toggle} />
-            <HomeOneHeader action={drawerAction.toggle} />
+            <HomeOneHeader action={drawerAction.toggle} color={'black'} />
             <HeroNews
-                title="Blog"
+                title={t("blog")}
                 breadcrumb={[
-                    { link: '/', title: 'home' },
-                    { link: '/blogs', title: 'Bloglar' },
-                    { link: '/blogs/blog/:id', title: 'Blog' },
+                    { link: '/', title: t("boshsahifaga") },
+                    { link: '/blogs', title: t("blogs") },
+                    { link: '/blogs/blog/:id', title: t("blog") },
                 ]}
             />
             <section className="blogpage-section">
@@ -27,9 +29,6 @@ function Blog() {
                         <div className="col-lg-12">
                             <SingleBlog />
                         </div>
-                        {/* <div className="col-lg-4 col-md-5">
-                            <BlogSideBar />
-                        </div> */}
                     </div>
                 </div>
             </section>

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Navigation({ lang = false }) {
+    const {t, i18n} = useTranslation()
     const location = useLocation()
     const isHome = location.pathname == "/"
     const [activeSection, setActiveSection] = useState('');
@@ -109,7 +111,7 @@ function Navigation({ lang = false }) {
             ) : (
                 <ul>
                     <li>
-                        <a href={`${isHome ? "#industries" : "/#industries"}`} className={activeSection == "industries" ? "active" : ""}>Sohalar</a>
+                        <a href={`${isHome ? "#industries" : "/#industries"}`} className={activeSection == "industries" ? "active" : ""}>{t("industry")}</a>
                     </li>
                     {/* <li>
                         <a href={`${isHome ? "#about-us" : "/#about-us"}`} className={activeSection == "about-us" ? "active" : ""}>Biz haqimizda</a>
@@ -118,13 +120,13 @@ function Navigation({ lang = false }) {
                         <a href={`${isHome ? "#team" : "/#team"}`} className={activeSection == "team" ? "active" : ""}>Jamoamiz</a>
                     </li> */}
                     <li>
-                        <a href={`${isHome ? "#pricing" : "/#pricing"}`} className={activeSection == "pricing" ? "active" : ""}>Narxlar</a>
+                        <a href={`${isHome ? "#pricing" : "/#pricing"}`} className={activeSection == "pricing" ? "active" : ""}>{t("prices")}</a>
                     </li>
                     <li>
-                        <a href={`${isHome ? "/blogs" : "/blogs"}`} className={activeSection == "blogs" ? "active" : ""}>Blog</a>
+                        <a href={`${isHome ? "/blogs" : "/blogs"}`} className={activeSection == "blogs" ? "active" : ""}>{t("blog")}</a>
                     </li>
                     <li>
-                        <a href={`${isHome ? "#contact_" : "/#contact_"}`} className={activeSection == "contact_" ? "active" : ""}>Aloqa</a>
+                        <a href={`${isHome ? "#contact_" : "/#contact_"}`} className={activeSection == "contact_" ? "active" : ""}>{t("contact")}</a>
                     </li>
                 </ul>
             )}

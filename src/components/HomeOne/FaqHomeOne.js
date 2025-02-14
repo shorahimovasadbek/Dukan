@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function FaqHomeOne({ className,dark }) {
+    const {t} = useTranslation()
     const [showQues, setQues] = useState(0);
     const [showMore,setShowMore] = useState(false)
     const openQuestion = (value) => {
@@ -13,88 +15,88 @@ function FaqHomeOne({ className,dark }) {
     const data = [
         {
             id:1,
-            question:"DUKAN Platformasidan foydalanishni qanday boshlash kerak?",
-            answer:"Birinchidan, rasmiy Dukan veb-saytida raqamanigizni qoldirishingiz  kerak biz aloqaga chiqishimz uchun. Keyin do'koningizni ishga tushirish uchun kerakli maketni tanlab ishga tushirishingiz mumkin."
+            question: t("question1"),
+            answer: t("answer1")
         },
         {
             id:2,
-            question:"Do'konga mahsulotlarni qanday qo'shish kerak?",
-            answer:"Hisobingizga kirganingizdan so'ng, mahsulot ma'lumotlarini yuborish uchun 'Mahsulot' bo'limidagi 'Mahsulot qo`shish' opsiyasini o'tkazing va foydalaning."
+            question:t("question2"),
+            answer:t("answer2")
         },
         {
             id:3,
-            question:"To'lov usullarini qanday sozlash kerak?",
-            answer:"Sozlamalar bo'limida To'lov-ni tanlang va kerakli to'lov usullarini qo'shing. Dukan turli to'lov tizimlari bilan integratsiyalashgan."
+            question:t("question3"),
+            answer:t("answer3")
         },
         {
             id:4,
-            question:"Men o'z domenimdan foydalana olamanmi?",
-            answer:"Ha, siz domeningizni Dukan tizimidagi doʻkoningizga ulashingiz mumkin.Buyurtmalari qayta ishlash qanday ishlaydi?"
+            question:t("question4"),
+            answer:t("answer4")
         },
         {
             id:5,
-            question:"Buyurtmalari qayta ishlash qanday ishlaydi?",
-            answer:"'Buyurtmalar' bo'limida siz barcha buyurtmalarni ko'rishingiz va boshqarishingiz, shuningdek, bajarilish holatini kuzatishingiz mumkin."
+            question:t("question5"),
+            answer:t("answer5")
         },
         {
             id:6,
-            question:"To'lovlar bilan bog'liq muammolar bo'lsa nima qilish kerak?",
-            answer:"Toʻlov sozlamalarini tekshiring, ular faollashtirilganligiga ishonch hosil qiling va muammolarni hal qilish uchun Dukan qoʻllab-quvvatlash xizmatiga murojaat qiling."
+            question:t("question6"),
+            answer:t("answer6")
         },
         {
             id:7,
-            question:"Chegirmalar va aktsiyalarni o'rnatishim mumkinmi?",
-            answer:"Ha, chegirma kuponlari, vaqtinchalik aksiyalar va boshqa maxsus takliflarni Savdo -> Chegirmalar bo'limida yaratishingiz mumkin."
+            question:t("question7"),
+            answer:t("answer7")
         },
         {
             id:8,
-            question:"Do'konimni ijtimoiy tarmoqlar bilan qanday integratsiyalash mumkin?",
-            answer:"Savdo bo'limida Savdo kanallarini tanlang va ijtimoiy tarmoqlarni qo'shing. Ijtimoiy media ilovalari bilan integratsiyadan ham foydalanishingiz mumkin."
+            question:t("question8"),
+            answer:t("answer8")
         },
         {
             id:9,
-            question:"Do'kon uchun mobil ilovani qanday sozlash kerak?",
-            answer:"Do'koningizni boshqarish uchun mobil ilovani taqdim etadi. Siz uni App Store yoki Google Play-dan yuklab olishingiz mumkin."
+            question:t("question9"),
+            answer:t("answer9")
         },
         {
             id:10,
-            question:"Do'konimga bannerni qanday qo'shish mumkin?",
-            answer:"Savdo bo'limida Banner-ni tanlang, u erda kontentni tahrirlash va boshqarish hamda imtiyozlar uchun blogga tashrif buyurish mumkin."
+            question:t("question10"),
+            answer:t("answer10")
         },
         {
             id:11,
-            question:"Hisob qaydnomangiz parolini unutgan bo'lsangiz nima qilish kerak?",
-            answer:"Veb-saytda va Dukan hisobingizda parolni tiklash opsiyasidan foydalaning"
+            question:t("question11"),
+            answer:t("answer11")
         },
         {
             id:12,
-            question:"Analitikani do’konimga integratsiya qilish mumkinmi?",
-            answer:"Ha, siz doʻkoningiz ish faoliyatini kuzatish uchun Google Analytics kabi uchinchi tomon tahlil vositalarini ulashingiz mumkin."
+            question:t("question12"),
+            answer:t("answer12")
         },
         {
             id:13,
-            question:"Qanday qilib do'konimni xavfsiz saqlashim mumkin?",
-            answer:"Do'konda standart xavfsizlik choralari, jumladan SSL shifrlash, firibgarlikdan himoyalanish va tizimni muntazam yangilash mavjud."
+            question:t("question13"),
+            answer:t("answer13")
         },
         {
             id:14,
-            question:"Do'konda ko'p tilli funksionallikni o'rnatish mumkinmi?",
-            answer:"'Sozlamalar' -> 'Til' bo'limida siz do'koningiz uchun kerakli tilni qo'shishingiz mumkin."
+            question:t("question14"),
+            answer:t("answer14")
         },
         {
             id:15,
-            question:"Dukan yordamiga qanday murojaat qilish mumkin?",
-            answer:"Do'kon administrator paneli, chat, elektron pochta yoki telefon orqali qo'llab-quvvatlash xizmatiga murojaat qilishingiz mumkin."
+            question:t("question15"),
+            answer:t("answer15")
         },
         {
             id:16,
-            question:"Maketni qanday test qilish mumkin?",
-            answer:"Marketni visual uchun quyidagi havolaga bosing: DukanDemo"
+            question:t("question16"),
+            answer:t("answer16")
         },
         {
             id:17,
-            question:"Istalgan joydan, istalgan vaqtda, istalgancha mijozga soting!",
-            answer:"Dukan orqali bir nechta qadamlarda internet do'koningizga ega bo'ling!"
+            question:t("question17"),
+            answer:t("answer17")
         }
     ]
     const handleShowMore = () => {
@@ -123,8 +125,7 @@ function FaqHomeOne({ className,dark }) {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="appie-section-title text-center">
-                                <h3 className="appie-title">Tez-tez so'raladigan savollar</h3>
-                                {/* <p>Different layouts and styles for team sections.</p> */}
+                                <h3 className="appie-title">{t("questions")}</h3>
                             </div>
                         </div>
                     </div>
@@ -206,13 +207,13 @@ function FaqHomeOne({ className,dark }) {
                             })}
                         </div>
                         <div className={`col-lg-12 all-blogs ${dark ? "dark" : ""}`}>
-                            <button onClick={handleShowMore}>Yana</button>
+                            <button onClick={handleShowMore}>{t("yana")}</button>
                         </div>
                         <div className="col-lg-12">
                             <div className="faq-text text-center pt-40">
                                 <p>
-                                    Qidirgan javobingizni topa olmadingizmi?{' '}
-                                    <a href="#contact_">Aloqaga chiqing</a>
+                                    {t("qidirgan")}
+                                    <a href="#contact_">{t("aloqa")}</a>
                                 </p>
                             </div>
                         </div>

@@ -14,8 +14,10 @@ import Steeper from "../Steeper";
 import "./style.css";
 import { ClipLoader } from "react-spinners";
 import getData from "../../services";
+import { useTranslation } from "react-i18next";
 
 function ChooseRoute() {
+  const {t} = useTranslation()
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
   const [data, setData] = useState([]);
@@ -74,7 +76,7 @@ function ChooseRoute() {
         <div className="container ">
           <Steeper number={2} />
           <h5 className="text-light mb-2">
-            O'zingiz Yoqtirgan Web-Sayt Shablonini Tanlang
+            {t("theme_text")}
           </h5>
           <div className="row">
             {data && data.themes ? (
@@ -124,7 +126,7 @@ function ChooseRoute() {
           </div>
           <div className="d-flex justify-content-center mt-5">
             <Link to="#">
-              <button className="btn btn-outline-light px-5">Ko'proq</button>
+              <button className="btn btn-outline-light px-5">{t("more")}</button>
             </Link>
           </div>
         </div>

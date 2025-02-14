@@ -9,30 +9,30 @@ function BlogHomeOne({ className, dark }) {
     const data = [
         {
             id:"to'liq_elektron_seo_qo'llanmasi",
-            title:"Toʻliq elektron tijorat SEO qoʻllanmasi (2024)",
+            title:"Toʻliq elektron tijorat SEO qoʻllanmasi (2025)",
             img:img1,
-            time:"Mart 10, 2024",
+            time:"Mart 10, 2025",
             type:"Saas & App"
         },
         {
-            id:"kichik_biznes_grantlar_2024",
-            title:"2024 yilda moliyalashtirishni qayerdan olish mumkin",
+            id:"kichik_biznes_grantlar_2025",
+            title:"2025 yilda moliyalashtirishni qayerdan olish mumkin",
             img:img2,
-            time:"Mart 14, 2024",
+            time:"Mart 14, 2025",
             type:"Saas & App"
         },
         {
             id:"elektron_tijorat",
             title:"Elektron tijorat",
             img:img3,
-            time:"Mart 20, 2024",
+            time:"Mart 20, 2025",
             type:"Saas & App"
         },
         {
             id:"domenlar_va_veb_sayt_hosting",
             title:"Domenlar va veb-sayt hosting",
             img:img4,
-            time:"Mart 22, 2024",
+            time:"Mart 22, 2025",
             type:"Saas & App"
         },
     ]

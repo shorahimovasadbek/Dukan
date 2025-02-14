@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import shapeTwo from "../../assets/images/shape/shape-2.png";
 import shapeThree from "../../assets/images/shape/shape-3.png";
 import shapeFour from "../../assets/images/shape/shape-4.png";
 import heroThumbTwo from "../../assets/newImages/card1.png";
+import heroThumbTwo2 from "../../assets/newImages/cardorg.png";
 import heroThumbOne from "../../assets/newImages/heromockup1.png";
+import heroThumbOne1 from "../../assets/newImages/heromockupro.png";
+import { useTranslation } from "react-i18next";
 
 function HeroHomeOne({ className }) {
+
+  const {t} = useTranslation()
+  const [lang, setLang] = useState(localStorage.getItem("i18nextLng" || 'Uz'))
+
+  useEffect(() => {
+     const handleStorageChange = () => {
+      setLang(localStorage.getItem("i18nextLng"));
+    };
+
+    window.addEventListener("dbclick", handleStorageChange);
+  }, [lang])
+  
+
   return (
     <>
       <section className={`appie-hero-area ${className || ""}`}>
@@ -15,11 +31,10 @@ function HeroHomeOne({ className }) {
               <div className="appie-hero-content">
                 <span>DUKAN Platform</span>
                 <h1 className="appie-title">
-                  Bir necha qadamlar bilan o'z online do'koningizga ega bo'ling!
+                  {t("header_text")}
                 </h1>
                 <p>
-                  Internet do'konga ega bo'lib, online savdolaringizni oshirish
-                  vaqti keldi!
+                  {t("header_text__bottom")}
                 </p>
                 <div className="home_hero-links">
                   <ul>
@@ -48,14 +63,14 @@ function HeroHomeOne({ className }) {
                   data-wow-duration="2000ms"
                   data-wow-delay="200ms"
                 >
-                  <img src={heroThumbOne} alt="" className="mockup1" />
+                  <img src={lang == 'Uz' ? heroThumbOne : heroThumbOne} alt="img dukan." className="mockup1" />
                 </div>
                 <div
                   className="thumb-2 wow animated fadeInRight"
                   data-wow-duration="2000ms"
                   data-wow-delay="600ms"
                 >
-                  <img src={heroThumbTwo} alt="" className="mockup2" />
+                  <img src={lang == 'Uz' ? heroThumbTwo : heroThumbTwo} alt="img dukan." className="mockup2" />
                 </div>
               </div>
             </div>

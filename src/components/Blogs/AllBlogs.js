@@ -4,38 +4,40 @@ import img1 from "../../assets/newImages/blogs/bloghead1.webp";
 import img2 from "../../assets/newImages/blogs/bloghead2.jpg";
 import img3 from "../../assets/newImages/blogs/bloghead3.jpg";
 import img4 from "../../assets/newImages/blogs/bloghead4.jpg";
+import { useTranslation } from 'react-i18next';
 
 function AllBlogs() {
+    const {t} = useTranslation()
     const data = [
         {
             id:"to'liq_elektron_seo_qo'llanmasi",
-            title:"Toʻliq elektron tijorat SEO qoʻllanmasi (2024)",
+            title:t("qo'llanma1"),
             img:img1,
-            time:"Mart 10, 2024",
+            time:t("time1"),
             type:"Saas & App",
             comments:"6"
         },
         {
-            id:"kichik_biznes_grantlar_2024",
-            title:"2024 yilda moliyalashtirishni qayerdan olish mumkin",
+            id:"kichik_biznes_grantlar_2025",
+            title:t("qo'llanma2"),
             img:img2,
-            time:"Mart 14, 2024",
+            time:t("time2"),
             type:"Saas & App",
             comments:"3"
         },
         {
             id:"elektron_tijorat",
-            title:"Elektron tijorat",
+            title:t("qo'llanma3"),
             img:img3,
-            time:"Mart 20, 2024",
+            time:t("time3"),
             type:"Saas & App",
             comments:"11"
         },
         {
             id:"domenlar_va_veb_sayt_hosting",
-            title:"Domenlar va veb-sayt hosting",
+            title:t("qo'llanma4"),
             img:img4,
-            time:"Mart 22, 2024",
+            time:t("time4"),
             type:"Saas & App",
             comments:"2"
         },
@@ -53,9 +55,6 @@ function AllBlogs() {
                                         <a href="#">
                                             <i className="fal fa-clock"></i>{d.time}
                                         </a>
-                                        {/* <a href="#">
-                                            <i className="fal fa-comments"></i>{d.comments} izohlar
-                                        </a> */}
                                     </div>
                                     <h3>
                                         <Link to={`/blogs/blog/${d.id}`}>
@@ -68,17 +67,6 @@ function AllBlogs() {
                     )
                 })}
             </div>
-            {/* <div className="row">
-                <div className="col-lg-12">
-                    <div className="bisylms-pagination">
-                        <span className="current">01</span>
-                        <a href="#">02</a>
-                        <a className="next" href="#">
-                            next<i className="fal fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div> */}
         </>
     );
 }

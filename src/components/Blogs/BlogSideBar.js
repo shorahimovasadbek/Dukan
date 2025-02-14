@@ -4,38 +4,40 @@ import BlogImg1 from '../../assets/newImages/blogs/bloghead1.webp';
 import BlogImg2 from '../../assets/newImages/blogs/bloghead2.jpg';
 import BlogImg3 from '../../assets/newImages/blogs/bloghead3.jpg';
 import BlogImg4 from '../../assets/newImages/blogs/bloghead4.jpg';
+import { useTranslation } from 'react-i18next';
 
 function BlogSideBar() {
+    const {t} = useTranslation()
     const data = [
         {
             id:"to'liq_elektron_seo_qo'llanmasi",
-            title:"Toʻliq elektron tijorat SEO qoʻllanmasi (2024)",
+            title:t("qo'llanma1"),
             img:BlogImg1,
-            time:"Mart 10, 2024",
+            time:t("time1"),
             type:"Saas & App",
             comments:"6"
         },
         {
-            id:"kichik_biznes_grantlar_2024",
-            title:"2024 yilda moliyalashtirishni qayerdan olish mumkin",
+            id:"kichik_biznes_grantlar_2025",
+            title:t("qo'llanma2"),
             img:BlogImg2,
-            time:"Mart 14, 2024",
+            time:t("time2"),
             type:"Saas & App",
             comments:"3"
         },
         {
             id:"elektron_tijorat",
-            title:"Elektron tijorat",
+            title:t("qo'llanma3"),
             img:BlogImg3,
-            time:"Mart 20, 2024",
+            time:t("time3"),
             type:"Saas & App",
             comments:"11"
         },
         {
             id:"domenlar_va_veb_sayt_hosting",
-            title:"Domenlar va veb-sayt hosting",
+            title:t("qo'llanma4"),
             img:BlogImg4,
-            time:"Mart 22, 2024",
+            time:t("time4"),
             type:"Saas & App",
             comments:"2"
         },
@@ -44,25 +46,25 @@ function BlogSideBar() {
         <div className="blog-sidebar">
             <aside className="widget widget-search">
                 <form className="search-form" action="#" method="post">
-                    <input type="search" name="s" placeholder="Qidiring..." />
+                    <input type="search" name="s" placeholder={t("qidiring")} />
                     <button type="submit">
                         <i className="fal fa-search"></i>
                     </button>
                 </form>
             </aside>
             <aside className="widget widget-categories">
-                <h3 className="widget-title">Kategoriyalar</h3>
+                <h3 className="widget-title">{t("kategoriyalar")}</h3>
                 <ul>
                     <li>
-                        <a href="#">Veb dizayn</a>
+                        <a href="#">{t("veb")}</a>
                         <span>(24)</span>
                     </li>
                     <li>
-                        <a href="#">Marketing</a>
+                        <a href="#">{t("marketing")}</a>
                         <span>(15)</span>
                     </li>
                     <li>
-                        <a href="#">Frontend</a>
+                        <a href="#">{t("frontend")}</a>
                         <span>(8)</span>
                     </li>
                     <li>
@@ -70,21 +72,21 @@ function BlogSideBar() {
                         <span>(13)</span>
                     </li>
                     <li>
-                        <a href="#">Fotografiya</a>
+                        <a href="#">{t("foto")}</a>
                         <span>(4)</span>
                     </li>
                     <li>
-                        <a href="#">Texnologiya</a>
+                        <a href="#">{t("texnologiya")}</a>
                         <span>(16)</span>
                     </li>
                     <li>
-                        <a href="#">Umumiy</a>
+                        <a href="#">{t("umumiy")}</a>
                         <span>(12)</span>
                     </li>
                 </ul>
             </aside>
             <aside className="widget widget-trend-post">
-                <h3 className="widget-title">Mashxur postlar</h3>
+                <h3 className="widget-title">{t("mashxur")}</h3>
                 {data.map(item => {
                     return (
                         <div className="popular-post">
@@ -99,21 +101,6 @@ function BlogSideBar() {
                     )
                 })}
             </aside>
-            {/* <aside className="widget">
-                <h3 className="widget-title">Popular Tags</h3>
-                <div className="tags">
-                    <a href="#">Bisy LMS</a>
-                    <a href="#">Design</a>
-                    <a href="#">General</a>
-                    <a href="#">Online</a>
-                    <a href="#">Prevention</a>
-                    <a href="#">Artist</a>
-                    <a href="#">Education</a>
-                    <a href="#">Motivation</a>
-                    <a href="#">Politico</a>
-                    <a href="#">Live Cases</a>
-                </div>
-            </aside> */}
         </div>
     );
 }

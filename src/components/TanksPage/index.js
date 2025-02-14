@@ -7,8 +7,10 @@ import FooterHomeOne from "../HomeOne/FooterHomeOne";
 import BackToTop from "../BackToTop";
 import "./style.css";
 import { Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 function Prices() {
+  const {t} = useTranslation()
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
 
@@ -42,12 +44,12 @@ function Prices() {
 
       <div className="container tahnksPage">
         <h1 className="tahnksPage_child">
-          Arizangiz muvaffaqiyatli qabul qilindi!!!
+          {t("thanks")}
         </h1>
         <div className="text-center mt-5">
           <Link to={themeId ? `/pricepage/${themeId}` : "/"}>
             <Button variant="warning">
-              {themeId ? "Sahifaga qaytish" : "Xaridni davom ettiring"}
+              {themeId ? t("back_to_page") : t("purchase")}
               <i className="bi bi-arrow-right"></i>
             </Button>
           </Link>

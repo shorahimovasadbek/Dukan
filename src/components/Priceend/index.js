@@ -11,8 +11,10 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import getData from "../../services";
 import { toast, ToastContainer } from "react-toastify";
 import { ClipLoader } from "react-spinners";
+import { useTranslation } from "react-i18next";
 
 function Prices() {
+  const {t} = useTranslation()
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
   const [checkCardInfo, setCheckCardInfo] = useState(false);
@@ -169,17 +171,16 @@ function Prices() {
         <div className="row">
           <div className="col-12 col-md-8">
             <h5 className="text-light mb-2">
-              Cosmetics Landing Page Divi Layout
+              {t("kosmetica")}
             </h5>
             <h6 className="text-light_h6 mb-4">
-              World-class designs with original photos and graphics available
-              for free to all Divi customers
+              {t("kosmetica_text")}
             </h6>
           </div>
           <div className="col-6 col-md-4 text-end">
             <Link to={`/prices`}>
               <button className="btn btn-outline-warning w-100 button_price1 my-3">
-                <i class="bi bi-arrow-left"></i> Orqaga qaytish
+                <i class="bi bi-arrow-left"></i> {t("back")}
               </button>
             </Link>
           </div>
@@ -187,12 +188,12 @@ function Prices() {
         <div className="card bg_1212__end p-4">
           <div className="row">
             <div className="col-12 col-md-8">
-              <h5 className="text-light mb-4">To'lov usullari</h5>
+              <h5 className="text-light mb-4">{t("payment_method")}</h5>
 
               <div className="row gap-3 ps-3 mb-3">
                 {[
-                  { id: "hozir", label: "Hoziroq to'lash" },
-                  { id: "keyin", label: "Keyinroq to'lash" },
+                  { id: "hozir", label: t("now_pay") },
+                  { id: "keyin", label: t("then_pay") },
                 ].map((item) => (
                   <div
                     key={item.id}
@@ -221,7 +222,7 @@ function Prices() {
                   className="btn w-100 button_price my-3"
                 >
                   <Link to="#">
-                    So'rov qoldirish <i class="bi bi-arrow-right"></i>
+                    {t("leave_request")} <i class="bi bi-arrow-right"></i>
                   </Link>
                 </button>
               )}
@@ -260,11 +261,11 @@ function Prices() {
               {checkCardInfo && (
                 <>
                   <h5 className="text-light my-3" id="karta_info">
-                    Karta ma'lumotlari
+                    {t("card_info")}
                   </h5>
                   <div className="row" id="karta_info1">
                     <div className="col-12">
-                      <label className="text-light">Karta raqami</label>
+                      <label className="text-light">{t("card_number")}</label>
                       <input
                         className="form-control bg-transparent text-white input_card__number"
                         type="number"
@@ -272,7 +273,7 @@ function Prices() {
                       />
                     </div>
                     <div className="col-12 col-md-3 mt-3">
-                      <label className="text-light">Amal qilish muddati</label>
+                      <label className="text-light">{t("validty_period")}</label>
                       <input
                         className="form-control bg-transparent text-white input_card__number"
                         type="number"
@@ -285,7 +286,7 @@ function Prices() {
             </div>
 
             <div className="col-12 col-md-4 mt-5 mt-md-0">
-              <h5 className="text-light">Mahsulot</h5>
+              <h5 className="text-light">{t("mahsulot_end")}</h5>
               <div className="d-flex justify-content-between my-4">
                 {themes.image ? (
                   <img
@@ -300,27 +301,26 @@ function Prices() {
                 )}
                 <div className="ms-3">
                   <h5 className="text-light_h6">
-                    Cosmetics Landing Page Divi Layout
+                    {t("kosmetica")}
                   </h5>
-                  <p className="text-light_h6">By pixelaxis</p>
                 </div>
               </div>
-              <h5 className="text-light mb-3">Narxi</h5>
+              <h5 className="text-light mb-3">{t("narxi")}</h5>
               <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Ta'rif narxi:</p>
+                <p>{t("tarif_narxi")}</p>
                 <p>{formatCurrency(tariff.price)}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Shablon narxi:</p>
+                <p>{t("shablon_narxi")}</p>
                 <p>{formatCurrency(themes.price)}</p>
               </div>
               <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Chegirma:</p>
+                <p>{t("chegirma")}</p>
                 <p>0</p>
               </div>
               <hr className="bg-light" />
               <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Jami:</p>
+                <p>{t("jami")}</p>
                 <p>{formatCurrency(themes.price + tariff.price)}</p>
               </div>
               {buttonSend && (
@@ -329,15 +329,13 @@ function Prices() {
                   className="btn w-100 button_price my-3"
                 >
                   <Link to="#">
-                    Sotib olish <i class="bi bi-arrow-right"></i>
+                    {t("sotib_olish")} <i class="bi bi-arrow-right"></i>
                   </Link>
                 </button>
               )}
 
               <p className="text-light_h6 my-3">
-                Davom etish orqali siz Xizmat shartlari va Maxfiylik
-                siyosatimizga rozilik bildirasiz. E'tibor bering, to'lovlar
-                qaytarilmaydi.
+                {t("sotib_olish__text")}
               </p>
             </div>
           </div>

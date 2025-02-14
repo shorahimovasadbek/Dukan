@@ -5,9 +5,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import getData from "../../services";
+import { useTranslation } from "react-i18next";
 
 function ProjectHomeOne({ className }) {
   // States
+  const {t} = useTranslation()
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [biznesType, setBiznesType] = useState("");
@@ -102,18 +104,17 @@ function ProjectHomeOne({ className }) {
                   <div className="col-lg-6 temporary-width">
                     <div className="appie-project-content">
                       <h3 className="title">
-                        Buyurtma yoki savollar bo'yicha murojaat qiling.
+                        {t("buyurtma")}
                       </h3>
                       <p>
-                        O'z marketplaysingizga ega bo'lib, mahsulotlaringizni
-                        24/7 soting!
+                       {t("buyurtma_text")}
                       </p>
                       <form onSubmit={sendMsg}>
                         <div className="input-box row mt-30">
                           <div className="number col-12 col-md-12">
                             <input
                               type="Text"
-                              placeholder="Ismingiz:"
+                              placeholder= {t("ism")}
                               onChange={(e) => setName(e.target.value)}
                             />
                           </div>
@@ -122,7 +123,7 @@ function ProjectHomeOne({ className }) {
                               type="number"
                               ref={phoneRef}
                               value={phone}
-                              placeholder="Telefon raqamingiz?"
+                              placeholder= {t("telefon")}
                               onChange={(e) => handleNumber(e)}
                             />
                             {/* <div className="country-code">+998</div> */}
@@ -130,28 +131,28 @@ function ProjectHomeOne({ className }) {
                           <div className="number col-12 col-md-12">
                             <input
                               type="Text"
-                              placeholder="Biznesingiz turi?"
+                              placeholder={t("buisnes_type")}
                               onChange={(e) => setBiznesType(e.target.value)}
                             />
                           </div>
                           <div className="number col-12 col-md-12 my-3">
                             <input
                               type="Text"
-                              placeholder="Qaysi tarif sizni qiziqtirayapdi?"
+                              placeholder= {t("tarif")}
                               onChange={(e) => setTarifType(e.target.value)}
                             />
                           </div>
                           <div className="number col-12 col-md-12">
                             <input
                               type="Text"
-                              placeholder="Qaysi payt siz bilan bog'lansak bo'ladi?"
+                              placeholder={t("bog'lanish")}
                               onChange={(e) => setConnectTime(e.target.value)}
                             />
                           </div>
                         </div>
                         <div className="button_submit d-flex justify-content-center">
                           <button type="submit" className="mt-3">
-                            Yuborish
+                            {t("send")}
                           </button>
                         </div>
                       </form>

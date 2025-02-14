@@ -14,8 +14,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { toast, ToastContainer } from "react-toastify";
 import { ClipLoader } from "react-spinners";
+import { useTranslation } from "react-i18next";
 
 function Prices() {
+  const { t } = useTranslation();
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
   const [data, setData] = useState("");
@@ -149,7 +151,7 @@ function Prices() {
             className="text-light"
             id="contained-modal-title-vcenter"
           >
-            Mijoz m'alumotlarini kiriting.
+            {t("client_text")}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -158,7 +160,7 @@ function Prices() {
               <input
                 type="text"
                 className="opacity_content form-control"
-                placeholder="Ismingizni kiriting."
+                placeholder={t("client_name")}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
@@ -173,7 +175,7 @@ function Prices() {
                 <input
                   type="number"
                   className="form-control opacity_content"
-                  placeholder="Telefon raqamingizni kiriting."
+                  placeholder={t("client_phone")}
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
@@ -182,7 +184,7 @@ function Prices() {
               <input
                 type="text"
                 className="opacity_content form-control"
-                placeholder="Kompaniya nomini kiriting."
+                placeholder={t("client_comp")}
                 onChange={(e) => setCompany(e.target.value)}
               />
             </div>
@@ -194,7 +196,7 @@ function Prices() {
             onClick={SendButton}
             id="buttonSend"
           >
-            Yuborish
+            {t("send")}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -212,14 +214,15 @@ function Prices() {
         <div className="">
           <Link to={`/theme/${themeIdCategory}`}>
             <button className="btn btn-outline-warning w-100 button_price1 my-3">
-              <i class="bi bi-arrow-left"></i> Orqaga qaytish
+              <i class="bi bi-arrow-left"></i> {t("back")}
             </button>
           </Link>
         </div>
-        <h5 className="text-light mb-2">Cosmetics Landing Page Divi Layout</h5>
+        <h5 className="text-light mb-2">
+          {t("kosmetica")}
+        </h5>
         <h6 className="text-light_h6 mb-4">
-          World-class designs with original photos and graphics available for
-          free to all Divi customers
+          {t("kosmetica_text")}
         </h6>
         <div className="row">
           <div className="col-12 col-md-8">
@@ -363,13 +366,13 @@ function Prices() {
                     <>
                       <div>
                         <h4 className="text-light">
-                          Companiya: {userInfo[0].company_name}
+                          {t("kompaniya_user")} {userInfo[0].company_name}
                         </h4>
                         <h4 className="text-light">
-                          Ismi: {userInfo[0].full_name}
+                          {t("kompaniya_ism")} {userInfo[0].full_name}
                         </h4>
                         <h4 className="text-light">
-                          Telefon raqami: {userInfo[0].phone_number}
+                          {t("kompaniya_tel")} {userInfo[0].phone_number}
                         </h4>
                       </div>
                     </>
@@ -390,67 +393,55 @@ function Prices() {
                 </div>
               )}
               <div className="d-flex justify-content-between align-items-center text_body_content">
-                <p>Chegirma:</p>
+                <p>{t("chegirma")}</p>
                 <p>0</p>
               </div>
               <Link to={`/prices`}>
                 <button className="btn btn-outline-warning w-100 button_price1 my-3">
-                  Keyingisi <i class="bi bi-arrow-right"></i>
+                  {t("next")} <i class="bi bi-arrow-right"></i>
                 </button>
               </Link>
             </div>
           </div>
 
           <div className="col-12 col-md-8 mt-5">
-            <h5 className="text-light mb-2">Loyiha haqida</h5>
+            <h5 className="text-light mb-2">{t("about_them")}</h5>
             <p className="text-light_h6">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
+              {t("about_them__text")}
             </p>
             <hr className="bg-light" />
 
-            <h5 className="text-light my-2">Mahsulot xususiyatlari</h5>
-            <p className="text-light_h6">Yaratilgan: 2023 yil 04-may</p>
+            <h5 className="text-light my-2">{t("mahsulot")}</h5>
+            <p className="text-light_h6">{t("create_them")}</p>
             <p className="text-light_h6">
-              Quyidagilar bilan mos keladi: Adobe InDesign, Boshqa
+              {t("compatibility_them")}
             </p>
-            <p className="text-light_h6">Fayl hajmi: 44,58 MB</p>
+            <p className="text-light_h6">{t("them_size")}</p>
             <p className="text-light_h6">
-              Vektor Olchamlari: 1080 x 1350 piksel
+              {t("them_vektor")}
             </p>
-            <p className="text-light_h6">DPI: 300 Qatlamli</p>
+            <p className="text-light_h6">{t("them_dpi")}</p>
             <hr className="bg-light" />
 
-            <h5 className="text-light my-2">Tavsif</h5>
+            <h5 className="text-light my-2">{t("description_them")}</h5>
             <p className="text-light_h6">
-              Ushbu kursning materiallari HTML5 va CSS3 bilan veb-dizayn va
-              ishlab chiqish bo'yicha boshqa kursimda ham yoritilgan. Ushbu
-              kursni ham tekshirish uchun ushbu sahifaning pastki qismiga
-              o'ting! Agar siz mening boshqa kursimni olayotgan bo'lsangiz,
-              bugungi kunda chiroyli veb-saytlarni loyihalashni boshlash uchun
-              sizga kerak bo'lgan hamma narsa bor!
+              {t("description_them1")}
             </p>
             <p className="text-light_h6 my-3">
-              "Eng yaxshi veb-dizayn kursi: Agar siz veb-dizaynga qiziqsangiz,
-              lekin shunchaki "WordPressdan qanday foydalanish" kursidan ko'proq
-              narsani istasangiz, men buni tavsiya qilaman." - Florian Giusti
+            {t("description_them2")}
             </p>
             <p className="text-light_h6">
-              "Biz chap miyali odamlar uchun juda foydali: men HTML, CSS, JQuery
-              va Twitter Bootstrap bilan yaxshi tanishman, lekin menga
-              veb-dizayn bo'yicha ko'rsatmalar kerak edi. Bu kurs menga
-              veb-saytlarni yanada chiroyli va qiziqarli qilish uchun amaliy,
-              ta'sirli usullarni berdi." - Syuzan Darlen{" "}
+            {t("description_them3")}
             </p>
             <hr className="bg-light" />
 
-            <h5 className="text-light my-3">Instruktor</h5>
+            <h5 className="text-light my-3">{t("instruktor")}</h5>
             <div className="d-flex align-items-center">
               <img src={img4} />
               <div className="ms-3">
                 <h6 className="text-light">Devonne Wallbridge</h6>
                 <p className="text-light_h6">
-                  Veb dasturchi, dizayner va o'qituvchi
+                  {t("instruktor_text")}
                 </p>
               </div>
             </div>
@@ -459,7 +450,7 @@ function Prices() {
         <div className="d-flex justify-content-start">
           <Link to={`/theme/${themeIdCategory}`}>
             <button className="btn btn-outline-warning w-100 button_price1 my-3">
-              <i class="bi bi-arrow-left"></i> Orqaga qaytish
+              <i class="bi bi-arrow-left"></i> {t("back")}
             </button>
           </Link>
         </div>

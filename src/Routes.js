@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom/cjs/react-router-dom";
+import { BrowserRouter, Redirect } from "react-router-dom/cjs/react-router-dom";
 import Blogs from "./components/Blogs";
 import Error from "./components/Error";
 import Loader from "./components/Helper/Loader";
@@ -13,18 +13,21 @@ import Prices from "./components/Prices";
 import PricesPage from "./components/PricePage";
 import PricesPageend from "./components/Priceend";
 import TeamHomeOne from "./components/HomeOne/TeamHomeOne";
-import TanksPage from './components/TanksPage'
+import TanksPage from "./components/TanksPage";
 
 function Routes() {
   const [loading, setLoading] = useState(true);
+  const [lang, setLang] = useState(localStorage.getItem("i18nextLng") || "uz");
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   useEffect(() => {
+    setLang(localStorage.getItem("i18nextLng"));
+    
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  });
+  }, []);
   return (
     <>
       {loading && (
@@ -35,17 +38,15 @@ function Routes() {
       <div className={`appie-visible ${loading === false ? "active" : ""}`}>
         <BrowserRouter>
           <ScrollToTop>
-            {/* <HashRouter> */}
             <Switch>
-              {/* <Route exact path="/" component={HomeOne} />
-                                    <Route exact path="/home-two" component={Hometwo} />
-                                    <Route exact path="/home-three" component={HomeThree} />
-                                    <Route exact path="/home-four" component={HomeFour} />
-                                    <Route exact path="/home-five" component={HomeFive} />
-                                    <Route exact path="/home-six" component={HomeSix} />
-                                    <Route exact path="/home-seven" component={HomeSeven} />
-                                    <Route exact path="/home-eight" component={HomeEight} /> */}
-              <Route exact path="/" component={HomeDark} />
+              <Route exact path="/">
+                <Redirect to={`/${lang}`} />
+              </Route>
+              <Route
+                exact
+                path={`/${lang}`}
+                component={HomeDark}
+              />
               <Route exact path="/blogs" component={Blogs} />
               <Route exact path="/blogs/blog/:id" component={Blog} />
               <Route exact path="/categories" component={ChooseRoute} />
@@ -53,19 +54,10 @@ function Routes() {
               <Route exact path="/prices" component={Prices} />
               <Route exact path="/pricepage/:id" component={PricesPage} />
               <Route exact path="/pricepageend/:id" component={PricesPageend} />
-              <Route exact path="/team" component={TeamHomeOne}/>
-              <Route exact path="/thanks" component={TanksPage}/>
-              {/* <Route exact path="/news/single-news" component={SingleNews} />
-                                    <Route exact path="/service" component={Service} />
-                                    <Route exact path="/about-us" component={AboutUs} />
-                                    <Route exact path="/contact" component={Contact} /> */}
-              <Route exact path="/error" component={Error} />
-              {/* <Route exact path="/about-us-another" component={AboutUsTwo} />
-                                    <Route exact path="/shops" component={Shops} />
-                                    <Route exact path="/shops/shop-details" component={ShopDetails} /> */}
+              <Route exact path="/team" component={TeamHomeOne} />
+              <Route exact path="/thanks" component={TanksPage} />
               <Route component={Error} />
             </Switch>
-            {/* </HashRouter> */}
           </ScrollToTop>
         </BrowserRouter>
       </div>

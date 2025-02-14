@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import shapeSix from "../../assets/images/shape/shape-6.png";
 import shapeSeven from "../../assets/images/shape/shape-7.png";
 import shapeEight from "../../assets/images/shape/shape-8.png";
@@ -13,18 +13,15 @@ import oziqovqat from "../../assets/newImages/industries/soha-ovqat.png";
 import oyinchoqlar from "../../assets/newImages/industries/soha-oyinchoq.png";
 import maishiytex from "../../assets/newImages/industries/soha-texnika.png";
 import qurilish from "../../assets/newImages/industries/soha-xozmagazin.png";
+import { useTranslation } from "react-i18next";
 
 function FeaturesHomeOne({ className }) {
-  const [tab, setTab] = useState("Mebel");
-  const handleClick = (e, value) => {
-    e.preventDefault();
-    setTab(value);
-  };
+  const {t, i18n} = useTranslation()
   const data = [
     {
       id: 1,
       icon: "fa-solid fa-chair",
-      name: "Mebel",
+      name: t("mebel"),
       img: mebel,
       title: "",
       text: "",
@@ -32,7 +29,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 2,
       icon: "fa-solid fa-pencil",
-      name: "Konstovar",
+      name: t("konstovar"),
       img: konstovar,
       title: "",
       text: "",
@@ -40,7 +37,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 3,
       icon: "fa-solid fa-plug",
-      name: "Elektronika",
+      name: t("elektronika"),
       img: elektronika,
       title: "",
       text: "",
@@ -48,7 +45,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 4,
       icon: "fa-solid fa-spray-can-sparkles",
-      name: "Parfume/Kosmetika",
+      name: t("kosmetika"),
       img: kosmetika,
       title: "",
       text: "",
@@ -56,7 +53,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 5,
       icon: "fa-solid fa-tv",
-      name: "Maishiy texnika",
+      name: t("maishiytex"),
       img: maishiytex,
       title: "",
       text: "",
@@ -64,7 +61,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 6,
       icon: "fa-solid fa-shirt",
-      name: "Kiyim/Butik",
+      name: t("kiyim"),
       img: kiyim,
       title: "",
       text: "",
@@ -72,7 +69,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 7,
       icon: "fa-solid fa-car",
-      name: "O'yinchoqlar",
+      name: t("oyinchoqlar"),
       img: oyinchoqlar,
       title: "",
       text: "",
@@ -80,7 +77,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 8,
       icon: "fa-solid fa-hammer",
-      name: "Qurilish materiallari",
+      name: t("qurilish"),
       img: qurilish,
       title: "",
       text: "",
@@ -88,7 +85,7 @@ function FeaturesHomeOne({ className }) {
     {
       id: 9,
       icon: "fa-solid fa-kitchen-set",
-      name: "Oshxona Idishlari",
+      name: t("oshxona"),
       img: oshxonaidish,
       title: "",
       text: "",
@@ -96,12 +93,25 @@ function FeaturesHomeOne({ className }) {
     {
       id: 10,
       icon: "fa-solid fa-bowl-food",
-      name: "Oziq-ovqat",
+      name: t("ovqat"),
       img: oziqovqat,
       title: "",
       text: "",
     },
   ];
+  const [tab, setTab] = useState(data[0]?.name || "");
+  useEffect(() => {
+    if (data.length > 0) {
+      setTab(data[0].name);
+    }
+  }, [i18n.language]);
+
+  const handleClick = (e, value) => {
+    e.preventDefault();
+    setTab(value);
+  };
+
+
   return (
     <section
       className={`appie-features-area pb-100 pt-100 ${className}`}
@@ -109,8 +119,7 @@ function FeaturesHomeOne({ className }) {
     >
       <div className="container">
         <p className="text-light text_info fs-1 lh-sm">
-          Dukan bu - biznesingiz uchun internet do'kon! <br/> Mijozlar siz uxlab
-          yotganda ham sizdan sotib olishi mumkin!
+         {t("header_center")}
         </p>
         <div className="row align-items-center">
           <div className="col-lg-4 indus_scroller">
@@ -121,7 +130,7 @@ function FeaturesHomeOne({ className }) {
                 role="tablist"
                 aria-orientation="vertical"
               >
-                {data.map((item) => {
+                {data.map((item, index) => {
                   return (
                     <a
                       onClick={(e) => handleClick(e, `${item.name}`)}
@@ -180,17 +189,11 @@ function FeaturesHomeOne({ className }) {
                         >
                           <span>DUKAN Platform</span>
                           <h3 className="title">
-                            {item.name} biznesingiz uchun veb-platforma sotib
-                            olish (2024)
+                            {item.name} {t("biznestitle")}
                           </h3>
                           <p>
-                            {/* {item.text} */}
-                            2024 yilda biz tarmoqda mavjudligimiz va mijozlar
-                            tajribasini yaxshilash uchun veb-platforma.
+                            {item.name} {t("biznestitlebottom")}
                           </p>
-                          {/* <a className="main-btn" href="#">
-                                                        Learn More
-                                                    </a> */}
                         </div>
                       </div>
                     </div>

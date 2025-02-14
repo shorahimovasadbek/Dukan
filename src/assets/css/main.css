@@ -162,6 +162,31 @@ p {
   height: 560px;
 }
 
+.img_flag{
+  height: 12px;
+  width: 15px;
+  margin-bottom: 3px;
+}
+
+#dropdown-basic-button, #black{
+  background-color: transparent !important;
+  border: none !important;
+}
+
+#dropdown-basic-button:focus, #dropdown-basic-button:focus-visible{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#black:focus, #black:focus-visible{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-menu{
+  min-width: max-content !important;
+}
+
 @media(max-width:1200px){
   .header-num{
     position: absolute;
@@ -178,6 +203,13 @@ p {
     width: 300px;
     height: 200px;
   }
+  #dropdown-basic-button{
+    color: #1f2128;
+  }
+}
+
+#black{
+  color: #1f2128;
 }
 
 /*===== All Button Style =====*/
@@ -6398,8 +6430,8 @@ input[type=number]::-webkit-outer-spin-button {
   margin-top: 30px;
 }
 @media (max-width: 767px) {
-  .footer-widget-info {
-    text-align: center;
+  .footer_mobiel__section {
+    text-align: start;
   }
 }
 .footer-widget-info .title {

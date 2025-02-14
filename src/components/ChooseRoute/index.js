@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import kosmetika from "../../assets/newImages/kosmetika.png";
-import mebel from "../../assets/newImages/mebel.png";
-import oziqovqat from "../../assets/newImages/oziqovqat.png";
-import kiyimkechak from "../../assets/newImages/kiyimkechak.png";
-import electronika from "../../assets/newImages/electronika.png";
-import shifoxona from "../../assets/newImages/shifoxona.png";
 import HomeOneHeader from "../HomeOne/HomeOneHeader";
 import Drawer from "../Mobile/Drawer";
 import useToggle from "../../Hooks/useToggle";
@@ -15,8 +10,10 @@ import "./style.css";
 import Steeper from "../Steeper";
 import getData from "../../services";
 import { ClipLoader } from "react-spinners";
+import { useTranslation } from "react-i18next";
 
 function ChooseRoute() {
+  const {t} = useTranslation()
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
   const [data, setData] = useState([])
@@ -57,7 +54,7 @@ function ChooseRoute() {
         <div className="container choosesection">
           <Steeper number={1} />
           <h5 className="text-light mb-2">
-            O’zingizga mos yo’nalishni tanlang
+            {t("category_text")}
           </h5>
           <div className="row">
             {

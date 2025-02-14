@@ -10,8 +10,10 @@ import "./style.css";
 import getData from "../../services";
 import { ClipLoader } from "react-spinners";
 import { Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 function Prices() {
+  const {t} = useTranslation()
   const [drawer, drawerAction] = useToggle(false);
   const [darkMode, setDarkMode] = useToggle(true);
   const [themeId, setThemeId] = useState(localStorage.getItem("themeIdChild"));
@@ -76,15 +78,15 @@ function Prices() {
         <Steeper number={2} />
         <div className="d-flex justify-content-between align-items-center row">
           <div className="col-12 col-md-6">
-            <h5 className="text-light mb-2">Narxlar rejalari</h5>
+            <h5 className="text-light mb-2">{t("prices_plan")}</h5>
             <h6 className="text-light_h6 mb-4">
-              Ehtiyojlaringizga mos keladigan eng yaxshi rejani tanlang.
+              {t("prices_plan__text")}
             </h6>
           </div>
           <div className="text-end mt-2 mt-md-5 col-12 col-md-6">
             <Link to={themeId ? `/pricepage/${themeId}` : ""}>
               <Button variant="warning">
-                <i className="bi bi-arrow-left"></i> Orqaga qaytish
+                <i className="bi bi-arrow-left"></i> {t("back")}
               </Button>
             </Link>
 
@@ -94,7 +96,7 @@ function Prices() {
                 to={themeId ? `/pricepageend/${tarifId}` : ""}
               >
                 <Button variant="warning">
-                  Keyingisi <i className="bi bi-arrow-right"></i>
+                  {t("next")} <i className="bi bi-arrow-right"></i>
                 </Button>
               </Link>
             ) : (
@@ -123,7 +125,6 @@ function Prices() {
                           {item.price == 0 ? "" : "so'm"}
                         </span>
                       </sub>
-                      {/* <span className="span_text span_text__bottom">/oy</span> */}
                     </p>
                     <ul className="ul_list__price">
                       <li className="d-flex justify-content-start align-items-center">
@@ -134,7 +135,7 @@ function Prices() {
                               : ""
                           }`}
                         ></i>
-                        <span className="text-light">Vaqt jadvali</span>
+                        <span className="text-light">{t('vaqt')}</span>
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i
@@ -144,7 +145,7 @@ function Prices() {
                               : ""
                           }`}
                         ></i>
-                        <span className="text-light">Asosiy qidiruv</span>
+                        <span className="text-light">{t("qidiruv")}</span>
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i
@@ -154,7 +155,7 @@ function Prices() {
                               : ""
                           }`}
                         ></i>
-                        <span className="text-light">Jonli suhbat vidjeti</span>
+                        <span className="text-light">{t("suhbat")}</span>
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i
@@ -165,7 +166,7 @@ function Prices() {
                           }`}
                         ></i>
                         <span className="text-light">
-                          Elektron pochta marketingi
+                          {t("pochta")}
                         </span>
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
@@ -176,7 +177,7 @@ function Prices() {
                               : ""
                           }`}
                         ></i>
-                        <span className="text-light">Maxsus shakllar</span>
+                        <span className="text-light">{t("shakillar")}</span>
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i
@@ -186,7 +187,7 @@ function Prices() {
                               : ""
                           }`}
                         ></i>
-                        <span className="text-light">Trafik tahlili</span>
+                        <span className="text-light">{t("trafik")}</span>
                       </li>
                       <li className="d-flex justify-content-start align-items-center">
                         <i
@@ -197,7 +198,7 @@ function Prices() {
                           }`}
                         ></i>
                         <span className="text-light">
-                          Asosiy qo'llab-quvvatlash
+                          {t("asosiy")}
                         </span>
                       </li>
                     </ul>
@@ -205,7 +206,7 @@ function Prices() {
                     {!tarifId ? (
                       <Link onClick={() => sendTarifId(item.id)}>
                         <button className="btn w-100 button_price my-3">
-                          Tarifni tanlash
+                          {t("tanlash")}
                         </button>
                       </Link>
                     ) : (
@@ -220,102 +221,6 @@ function Prices() {
               <ClipLoader color="#ffffff" />
             </div>
           )}
-
-          {/* <div className="col-12 col-md-4 my-5 my-md-0">
-            <div className="card card_price p-4">
-              <h4 className="text-center text-light mt-4">Asosiy</h4>
-              <p className="text-center text-light">
-                Hamma uchun oddiy boshlanish
-              </p>
-              <h1 className="text-warning_h1 text-center">
-                1.3
-                <sub>
-                  <span className="span_text">mln</span>
-                </sub>
-                <span className="span_text span_text__bottom">/oy</span>
-              </h1>
-              <ul className="ul_list__price">
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Vaqt jadvali</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Asosiy qidiruv</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Jonli suhbat vidjeti</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Elektron pochta marketingi</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Maxsus shakllar</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Trafik tahlili</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Asosiy qo'llab-quvvatlash</span>
-                </li>
-              </ul>
-
-              <Link to="/pricepage"><button className="btn btn-outline-warning w-100 button_price my-3">Sotib olish</button></Link>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-4">
-            <div className="card card_price p-4">
-              <h4 className="text-center text-light mt-4">Asosiy</h4>
-              <p className="text-center text-light">
-                Hamma uchun oddiy boshlanish
-              </p>
-              <h1 className="text-warning_h1 text-center">
-                1.3
-                <sub>
-                  <span className="span_text">mln</span>
-                </sub>
-                <span className="span_text span_text__bottom">/oy</span>
-              </h1>
-              <ul className="ul_list__price">
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Vaqt jadvali</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Asosiy qidiruv</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Jonli suhbat vidjeti</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Elektron pochta marketingi</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Maxsus shakllar</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Trafik tahlili</span>
-                </li>
-                <li className="d-flex justify-content-start align-items-center">
-                  <i class="bi bi-check icon_done"></i>
-                  <span className="text-light">Asosiy qo'llab-quvvatlash</span>
-                </li>
-              </ul>
-
-              <Link to="/pricepage"><button className="btn btn-outline-warning w-100 button_price my-3">Sotib olish</button></Link>
-            </div>
-          </div> */}
         </div>
       </div>
 

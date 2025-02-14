@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom';
 import logo from '../../assets/newImages/logo/dukan-inverse.png';
+import { useTranslation } from 'react-i18next';
 
 function FooterHomeOne({ className }) {
+    const {t} = useTranslation()
     const location = useLocation()
     const isHome = location.pathname == "/"
     return (
@@ -50,22 +52,16 @@ function FooterHomeOne({ className }) {
                         </div>
                         <div className="col-lg-2 col-md-6">
                             <div className="footer-navigation">
-                                <h4 className="title">Kompaniya</h4>
+                                <h4 className="title">{t("kompaniya")}</h4>
                                 <ul>
-                                    {/* <li>
-                                        <a href={`${isHome ? "#features" : "/"}`}>Afzalliklarimiz</a>
-                                    </li> */}
-                                    {/* <li>
-                                        <a href={`${isHome ? "#about-us" : "/"}`}>Biz haqimizda</a>
-                                    </li> */}
                                     <li>
-                                        <a href={`${isHome ? "/team" : "/"}`}>Jamoamiz</a>
+                                        <a href={`${isHome ? "/team" : "/"}`}>{t("team")}</a>
                                     </li>
                                     <li>
-                                        <a href={`${isHome ? "/blogs" : "/"}`}>Blog</a>
+                                        <a href={`${isHome ? "/blogs" : "/"}`}>{t("blog")}</a>
                                     </li>
                                     <li>
-                                        <a href={`${isHome ? "#contact_" : "/"}`}>Aloqa</a>
+                                        <a href={`${isHome ? "#contact_" : "/"}`}>{t("contact")}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -75,16 +71,13 @@ function FooterHomeOne({ className }) {
                                 <h4 className="title">DUKAN</h4>
                                 <ul>
                                     <li>
-                                        <a href={`${isHome ? "#industries" : "/"}`}>Sohalar</a>
+                                        <a href={`${isHome ? "#industries" : "/"}`}>{t("industry")}</a>
                                     </li>
                                     <li>
-                                        <a href={`${isHome ? "#facilities" : "/"}`}>Xususiyatlar</a>
+                                        <a href={`${isHome ? "#facilities" : "/"}`}>{t("xususiyatlar")}</a>
                                     </li>
-                                    {/* <li>
-                                        <a href="#testimonial">Izohlar</a>
-                                    </li> */}
                                     <li>
-                                        <a href={`${isHome ? "#pricing" : "/"}`}>Narxlar</a>
+                                        <a href={`${isHome ? "#pricing" : "/"}`}>{t("prices")}</a>
                                     </li>
                                     <li>
                                         <a href={`${isHome ? "#faqs" : "/"}`}>TTS</a>
@@ -94,26 +87,26 @@ function FooterHomeOne({ className }) {
                         </div>
                         <div className="col-lg-3 col-md-6">
                             <div className="footer-widget-info">
-                                <h4 className="title">Aloqa uchun</h4>
+                                <h4 className="title">{t("with_contact")}</h4>
                                 <ul>
                                     <li>
                                         <a href="mailto:sales@al-raqam.com">
-                                            <i className="fal fa-envelope" /> sales@al-raqam.com
+                                            <i className="fal fa-envelope" /> info@al-raqam.com
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="tel:+998333138222">
+                                        <a href="tel:+998555131110">
                                             <i className="fal fa-phone" /> +998 55 513 11 10
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <i className="fal fa-map-marker-alt" /> Toshkent sh. Yunusobod tumani, Anorzor mahallasi, Oqilota ko'chasi, 26-11. 100099
+                                        <a href="https://yandex.com/maps/org/al_raqam_hub/28472095891/?ll=69.284839%2C41.355372&z=17" target="_blank">
+                                            <i className="fal fa-map-marker-alt" /> {t("location")}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="https://al-raqam.com/" target='_blank'>
-                                            <i className="fa-solid fa-laptop" />al-raqam.com
+                                            <i className="fa-solid fa-laptop" /> {t("by_companiya")}
                                         </a>
                                     </li>
                                 </ul>
@@ -138,7 +131,7 @@ function FooterHomeOne({ className }) {
                                     </ul>
                                 </div>
                                 <div className="copyright-text">
-                                    <p>Copyright © 2023 al-raqam. Barcha huquqlar himoyalangan.</p>
+                                    <p>{t("huquq")}</p>
                                 </div>
                             </div>
                         </div>

@@ -5,8 +5,10 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import "./style.css";
+import { useTranslation } from "react-i18next";
 
 function Steeper({ number }) {
+  const {t} = useTranslation()
   const [idtheme, setIdTheme] = useState(localStorage.getItem("themeId"));
   const [tariffId, setIdTariff] = useState(
     localStorage.getItem("TariffIdPrices")
@@ -18,10 +20,10 @@ function Steeper({ number }) {
   }, []);
 
   const steps = [
-    { name: "Barcha mahsulotlar", url: "/categories", number: "01" },
-    { name: "Dizayn tanlash", url: `/theme/${idtheme ? idtheme : 1}`, number: "02" },
-    { name: "Ta'rifni tanlash", url: `/prices`, number: "03" },
-    { name: "To'lov bosqichi", url: `/pricepage/${tariffId ? tariffId : 1}`, number: "04" },
+    { name: t("all_thems"), url: "/categories", number: "01" },
+    { name: t("design_thems"), url: `/theme/${idtheme ? idtheme : 1}`, number: "02" },
+    { name: t("tarif_thems"), url: `/prices`, number: "03" },
+    { name: t("payment_thems"), url: `/pricepage/${tariffId ? tariffId : 1}`, number: "04" },
   ];
 
   return (

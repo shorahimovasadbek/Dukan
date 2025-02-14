@@ -7,8 +7,10 @@ import Drawer from '../Mobile/Drawer';
 import AllBlogs from './AllBlogs';
 import BlogSideBar from './BlogSideBar';
 import HeroNews from './HeroNews';
+import { useTranslation } from 'react-i18next';
 
 function Blogs({darkMode}) {
+    const {t} = useTranslation()
     const [drawer, drawerAction] = useToggle(false);
     return (
         <>
@@ -16,12 +18,13 @@ function Blogs({darkMode}) {
             <Drawer drawer={drawer} action={drawerAction.toggle} />
             <HomeOneHeader
                 action={drawerAction.toggle}
+                color={'black'}
             />
             <HeroNews
-                title="Bloglar"
+                title={t("blogs")}
                 breadcrumb={[
-                    { link: '/', title: 'home' },
-                    { link: '#', title: 'Bloglar' },
+                    { link: '/', title: t("boshsahifaga") },
+                    { link: '#', title: t("blogs") },
                 ]}
             />
             <section className="blogpage-section">
